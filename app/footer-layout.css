@@ -1,0 +1,10 @@
+@media (min-width: 640px) {
+  footer > div:last-of-type > div:last-child > p:first-child {
+    order: 2;
+    text-align: right;
+  }
+
+  footer > div:last-of-type > div:last-child > p:last-child {
+    order: 1;
+  }
+}
