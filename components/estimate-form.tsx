@@ -1,18 +1,17 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {Button} from './ui/button';
 
 const services=['Gutter installation','Gutter repair','Gutter guards','Gutter cleaning','Exterior painting','Interior painting','Cabinet painting','Roofing inspection','Roofing cash bid','Roofing insurance assistance','Fencing','Other exterior service'];
 
 export function EstimateForm({compact=false}:{compact?:boolean}){
+  const formRef=useRef<HTMLFormElement>(null);
   const [state,setState]=useState<'idle'|'sending'|'success'|'error'>('idle');
   const [message,setMessage]=useState('');
   const [startedAt,setStartedAt]=useState(()=>Date.now());
 
-  async function submit(event:React.FormEvent<HTMLFormElement>){
-    event.preventDefault();
-    const form=event.currentTarget;
+  async function submit(form:HTMLFormElement){
     setState('sending');
     setMessage('Sending your request securely…');
     try{
@@ -30,7 +29,18 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
     }
   }
 
-  return <form id="estimate-form" name="estimate_request" method="post" action="/api/estimate" onSubmit={submit} className="mt-6 grid gap-4" encType="multipart/form-data">
+  useEffect(()=>{
+    const handleSubmit=(event:SubmitEvent)=>{
+      const form=formRef.current;
+      if(!form||event.target!==form) return;
+      event.preventDefault();
+      void submit(form);
+    };
+    window.addEventListener('submit',handleSubmit);
+    return ()=>window.removeEventListener('submit',handleSubmit);
+  });
+
+  return <form ref={formRef} id="estimate-form" name="estimate_request" method="post" action="/api/estimate" className="mt-6 grid gap-4" encType="multipart/form-data">
     <div className={compact?'grid gap-4 sm:grid-cols-2':'grid gap-4 md:grid-cols-2'}>
       <Field label="Name" name="name" autoComplete="name" required/>
       <Field label="Phone" name="phone" type="tel" autoComplete="tel" required/>

@@ -60,7 +60,8 @@ export function LandingPageClient({html}:{html:string}){
       attributionFields.forEach(field=>ensureHidden(field,params.get(field)||''));
       ensureHidden('landing_page','estimate-a');
 
-      on(form,'submit',async event=>{
+      const handleSubmit=async(event:SubmitEvent)=>{
+        if(event.target!==form) return;
         event.preventDefault();
         if(!form.reportValidity()) return;
         const status=form.querySelector<HTMLElement>('.rae-form-status');
@@ -86,7 +87,9 @@ export function LandingPageClient({html}:{html:string}){
         }finally{
           if(button){button.disabled=false;button.textContent='Get My Free Estimate';}
         }
-      });
+      };
+      window.addEventListener('submit',handleSubmit);
+      cleanups.push(()=>window.removeEventListener('submit',handleSubmit));
     }
 
     return ()=>cleanups.forEach(cleanup=>cleanup());
