@@ -8,6 +8,7 @@ const DESTINATION_EMAIL='RuggedAmericanExteriors@gmail.com';
 const RATE_LIMIT_WINDOW_MS=15*60*1000;
 const RATE_LIMIT_MAX=5;
 const allowedUploads=['image/jpeg','image/png','image/webp'];
+const attributionKeys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid','msclkid','landing_page'] as const;
 
 const schema=z.object({
   name:z.string().trim().min(2,'Enter your name.').max(100),
@@ -124,6 +125,9 @@ export async function POST(req:Request){
     });
 
     const data=parsed.data;
+    const attribution=attributionKeys
+      .map(key=>[key,String(form.get(key)||'').trim()] as const)
+      .filter(([,value])=>value);
     const text=[
       'New website request from RuggedAmericanExteriors.com',
       '',
@@ -136,6 +140,7 @@ export async function POST(req:Request){
       '',
       'Customer message:',
       data.message,
+      ...(attribution.length?['','Advertising attribution:',...attribution.map(([key,value])=>`${key}: ${value}`)]:[]),
     ].join('\n');
 
     const html=`<h1>New website request</h1>
@@ -148,7 +153,8 @@ export async function POST(req:Request){
         <tr><th align="left">Property address or ZIP</th><td>${escapeHtml(data.address)}</td></tr>
         <tr><th align="left">Preferred contact</th><td>${escapeHtml(data.contact)}</td></tr>
       </table>
-      <h2>Customer message</h2><p>${escapeHtml(data.message).replace(/\n/g,'<br>')}</p>`;
+      <h2>Customer message</h2><p>${escapeHtml(data.message).replace(/\n/g,'<br>')}</p>
+      ${attribution.length?`<h2>Advertising attribution</h2><table cellpadding="7" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#dddddd">${attribution.map(([key,value])=>`<tr><th align="left">${escapeHtml(key)}</th><td>${escapeHtml(value)}</td></tr>`).join('')}</table>`:''}`;
 
     await transport.sendMail({
       from:{name:'RuggedAmericanExteriors.com',address:SMTP_FROM_EMAIL||SMTP_USER},
