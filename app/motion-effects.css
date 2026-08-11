@@ -1,0 +1,51 @@
+.motion-ready .motion-reveal {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 650ms cubic-bezier(.2,.72,.2,1) var(--motion-delay, 0ms),
+    transform 650ms cubic-bezier(.2,.72,.2,1) var(--motion-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.motion-ready .motion-reveal.motion-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.motion-ready header {
+  animation: site-header-arrival 520ms cubic-bezier(.2,.72,.2,1) both;
+}
+
+.motion-ready main article,
+.motion-ready main [class*="shadow"],
+.motion-ready #rae-landing-page .rae-service-card,
+.motion-ready #rae-landing-page .rae-gallery-grid figure {
+  transition-property: transform, box-shadow, border-color, background-color;
+  transition-duration: 220ms;
+  transition-timing-function: ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-ready main article:hover,
+  .motion-ready #rae-landing-page .rae-service-card:hover,
+  .motion-ready #rae-landing-page .rae-gallery-grid figure:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes site-header-arrival {
+  from { opacity: 0; transform: translate3d(0, -12px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .motion-reveal,
+  .motion-ready .motion-reveal.motion-visible,
+  .motion-ready header {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
