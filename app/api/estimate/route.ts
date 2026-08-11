@@ -13,9 +13,9 @@ const schema=z.object({
   name:z.string().trim().min(2,'Enter your name.').max(100),
   phone:z.string().trim().min(7,'Enter a valid phone number.').max(30),
   email:z.string().trim().email('Enter a valid email address.').max(254),
-  location:z.string().trim().min(3,'Enter the property address or ZIP code.').max(160),
+  address:z.string().trim().min(3,'Enter the property address or ZIP code.').max(160),
   service:z.string().trim().min(2,'Select a requested service.').max(80),
-  details:z.string().trim().min(10,'Tell us a little more about the project.').max(5000),
+  message:z.string().trim().min(10,'Tell us a little more about the project.').max(5000),
   contact:z.enum(['Phone','Email','Text']),
   startedAt:z.coerce.number().int().positive(),
 });
@@ -64,9 +64,16 @@ export async function POST(req:Request){
       return NextResponse.json({message:'Thank you. Your request has been received.'});
     }
 
-    const raw=Object.fromEntries(
-      ['name','phone','email','location','service','details','contact','startedAt'].map(key=>[key,String(form.get(key)||'')]),
-    );
+    const raw={
+      name:String(form.get('name')||''),
+      phone:String(form.get('phone')||''),
+      email:String(form.get('email')||''),
+      address:String(form.get('address')||form.get('location')||''),
+      service:String(form.get('service')||''),
+      message:String(form.get('message')||form.get('details')||''),
+      contact:String(form.get('contact')||''),
+      startedAt:String(form.get('startedAt')||''),
+    };
     const parsed=schema.safeParse(raw);
     if(!parsed.success){
       return NextResponse.json(
@@ -124,11 +131,11 @@ export async function POST(req:Request){
       `Phone: ${data.phone}`,
       `Email: ${data.email}`,
       `Requested service: ${data.service}`,
-      `Property address or ZIP: ${data.location}`,
+      `Property address or ZIP: ${data.address}`,
       `Preferred contact: ${data.contact}`,
       '',
       'Customer message:',
-      data.details,
+      data.message,
     ].join('\n');
 
     const html=`<h1>New website request</h1>
@@ -138,10 +145,10 @@ export async function POST(req:Request){
         <tr><th align="left">Phone</th><td>${escapeHtml(data.phone)}</td></tr>
         <tr><th align="left">Email</th><td>${escapeHtml(data.email)}</td></tr>
         <tr><th align="left">Requested service</th><td>${escapeHtml(data.service)}</td></tr>
-        <tr><th align="left">Property address or ZIP</th><td>${escapeHtml(data.location)}</td></tr>
+        <tr><th align="left">Property address or ZIP</th><td>${escapeHtml(data.address)}</td></tr>
         <tr><th align="left">Preferred contact</th><td>${escapeHtml(data.contact)}</td></tr>
       </table>
-      <h2>Customer message</h2><p>${escapeHtml(data.details).replace(/\n/g,'<br>')}</p>`;
+      <h2>Customer message</h2><p>${escapeHtml(data.message).replace(/\n/g,'<br>')}</p>`;
 
     await transport.sendMail({
       from:{name:'RuggedAmericanExteriors.com',address:SMTP_FROM_EMAIL||SMTP_USER},
