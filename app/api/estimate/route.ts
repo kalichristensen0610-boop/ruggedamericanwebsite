@@ -48,21 +48,28 @@ function escapeHtml(value:string){
   return value.replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]||character));
 }
 
-export async function POST(req:Request){
-  const limit=checkRateLimit(clientIp(req));
-  if(!limit.allowed){
-    return NextResponse.json(
-      {message:'Too many requests were sent from this connection. Please wait a few minutes or call (817) 512-9879.'},
-      {status:429,headers:{'Retry-After':String(limit.retryAfter)}},
-    );
+function respond(req:Request,form:FormData|undefined,result:{success?:boolean;message:string;errors?:unknown},status=200,headers?:HeadersInit){
+  const returnTo=String(form?.get('return_to')||'');
+  if(returnTo.startsWith('/')&&!returnTo.startsWith('//')){
+    const destination=new URL(returnTo,req.url);
+    destination.searchParams.set('estimate_status',result.success?'success':'error');
+    return NextResponse.redirect(destination,{status:303,headers});
   }
+  return NextResponse.json(result,{status,headers});
+}
 
+export async function POST(req:Request){
+  let form:FormData|undefined;
   try{
-    const form=await req.formData();
+    form=await req.formData();
+    const limit=checkRateLimit(clientIp(req));
+    if(!limit.allowed){
+      return respond(req,form,{message:'Too many requests were sent from this connection. Please wait a few minutes or call (817) 512-9879.'},429,{'Retry-After':String(limit.retryAfter)});
+    }
 
     // Hidden honeypot. Bots receive a neutral response without triggering email.
     if(String(form.get('website')||'').trim()){
-      return NextResponse.json({message:'Thank you. Your request has been received.'});
+      return respond(req,form,{success:true,message:'Thank you. Your request has been received.'});
     }
 
     const raw={
@@ -77,18 +84,12 @@ export async function POST(req:Request){
     };
     const parsed=schema.safeParse(raw);
     if(!parsed.success){
-      return NextResponse.json(
-        {message:'Please check the required fields and try again.',errors:parsed.error.flatten().fieldErrors},
-        {status:400},
-      );
+      return respond(req,form,{message:'Please check the required fields and try again.',errors:parsed.error.flatten().fieldErrors},400);
     }
 
     const elapsed=Date.now()-parsed.data.startedAt;
     if(elapsed<1500||elapsed>24*60*60*1000){
-      return NextResponse.json(
-        {message:'We could not verify this submission. Please refresh the page and try again, or call (817) 512-9879.'},
-        {status:400},
-      );
+      return respond(req,form,{message:'We could not verify this submission. Please refresh the page and try again, or call (817) 512-9879.'},400);
     }
 
     const photo=form.get('photo');
@@ -96,10 +97,7 @@ export async function POST(req:Request){
     if(photo instanceof File&&photo.size){
       const maximumBytes=(Number(process.env.UPLOAD_MAX_MB)||8)*1024*1024;
       if(photo.size>maximumBytes||!allowedUploads.includes(photo.type)){
-        return NextResponse.json(
-          {message:'The photo must be a JPG, PNG, or WebP within the 8 MB size limit.'},
-          {status:400},
-        );
+        return respond(req,form,{message:'The photo must be a JPG, PNG, or WebP within the 8 MB size limit.'},400);
       }
       attachment={
         filename:photo.name.replace(/[^a-zA-Z0-9._-]/g,'_'),
@@ -111,10 +109,7 @@ export async function POST(req:Request){
     const {SMTP_HOST,SMTP_PORT,SMTP_SECURE,SMTP_USER,SMTP_PASSWORD,SMTP_FROM_EMAIL}=process.env;
     if(!SMTP_HOST||!SMTP_USER||!SMTP_PASSWORD){
       console.error('Estimate email delivery is missing required SMTP environment variables.');
-      return NextResponse.json(
-        {message:'Email delivery is temporarily unavailable. Please call (817) 512-9879 so we can help you right away.'},
-        {status:503},
-      );
+      return respond(req,form,{message:'Email delivery is temporarily unavailable. Please call (817) 512-9879 so we can help you right away.'},503);
     }
 
     const transport=nodemailer.createTransport({
@@ -126,7 +121,7 @@ export async function POST(req:Request){
 
     const data=parsed.data;
     const attribution=attributionKeys
-      .map(key=>[key,String(form.get(key)||'').trim()] as const)
+      .map(key=>[key,String(form!.get(key)||'').trim()] as const)
       .filter(([,value])=>value);
     const text=[
       'New website request from RuggedAmericanExteriors.com',
@@ -166,12 +161,9 @@ export async function POST(req:Request){
       attachments:attachment?[attachment]:[],
     });
 
-    return NextResponse.json({success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
+    return respond(req,form,{success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
   }catch(error){
     console.error('Estimate form delivery failed.',error instanceof Error?error.message:'Unknown error');
-    return NextResponse.json(
-      {message:'We could not send your request. Please try again or call (817) 512-9879.'},
-      {status:500},
-    );
+    return respond(req,form,{message:'We could not send your request. Please try again or call (817) 512-9879.'},500);
   }
 }

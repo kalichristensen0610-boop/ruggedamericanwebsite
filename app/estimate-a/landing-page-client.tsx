@@ -41,8 +41,8 @@ export function LandingPageClient({html}:{html:string}){
       form.method='post';
       form.action='/api/estimate';
       form.name='estimate_a';
+      form.removeAttribute('target');
       form.removeAttribute('data-rae-preview-form');
-      const startedAt=String(Date.now());
       const params=new URLSearchParams(window.location.search);
       const ensureHidden=(name:string,value:string)=>{
         let input=form.elements.namedItem(name) as HTMLInputElement|null;
@@ -56,56 +56,37 @@ export function LandingPageClient({html}:{html:string}){
       };
       ensureHidden('message','Paid advertising landing page estimate request.');
       ensureHidden('contact','Phone');
-      ensureHidden('startedAt',startedAt);
+      ensureHidden('startedAt',String(Date.now()));
       attributionFields.forEach(field=>ensureHidden(field,params.get(field)||''));
       ensureHidden('landing_page','estimate-a');
 
-      const responseFrame=document.createElement('iframe');
-      responseFrame.name='estimate-a-response';
-      responseFrame.title='Estimate form response';
-      responseFrame.hidden=true;
-      root.appendChild(responseFrame);
-      form.target=responseFrame.name;
-      let awaitingResponse=false;
+      const returnUrl=new URL(window.location.href);
+      const result=returnUrl.searchParams.get('estimate_status');
+      returnUrl.searchParams.delete('estimate_status');
+      const cleanLocation=`${returnUrl.pathname}${returnUrl.search}`;
+      ensureHidden('return_to',cleanLocation);
+      if(result){
+        const status=form.querySelector<HTMLElement>('.rae-form-status');
+        if(status){
+          status.hidden=false;
+          status.textContent=result==='success'
+            ?'Thank you. Your request was sent successfully. Our team will be in touch soon.'
+            :'We could not send your request. Please check the form and try again, or call us directly.';
+        }
+        window.history.replaceState({},'',`${cleanLocation}${returnUrl.hash}`);
+      }
 
       const handleSubmit=()=>{
         if(!form.reportValidity()) return;
-        awaitingResponse=true;
         const status=form.querySelector<HTMLElement>('.rae-form-status');
         const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
         ensureHidden('name',`${(form.elements.namedItem('first_name') as HTMLInputElement)?.value||''} ${(form.elements.namedItem('last_name') as HTMLInputElement)?.value||''}`.trim());
+        ensureHidden('return_to',cleanLocation);
         if(status){status.hidden=false;status.textContent='Sending your request securely…';}
         if(button){button.disabled=true;button.textContent='Sending…';}
       };
-      const handleResponse=()=>{
-        if(!awaitingResponse) return;
-        awaitingResponse=false;
-        const status=form.querySelector<HTMLElement>('.rae-form-status');
-        const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
-        try{
-          const text=responseFrame.contentDocument?.body.textContent||'';
-          const result=JSON.parse(text) as {success?:boolean;message?:string};
-          const successful=result.success===true;
-          if(status) status.textContent=result.message||'The server returned an unexpected response. Please call us so we can help.';
-          if(successful){
-            form.reset();
-            attributionFields.forEach(field=>ensureHidden(field,params.get(field)||''));
-            ensureHidden('landing_page','estimate-a');
-            ensureHidden('message','Paid advertising landing page estimate request.');
-            ensureHidden('contact','Phone');
-            ensureHidden('startedAt',String(Date.now()));
-          }
-        }catch{
-          if(status) status.textContent='Your request could not be confirmed. Please try again or call us directly.';
-        }finally{
-          if(button){button.disabled=false;button.textContent='Get My Free Estimate';}
-        }
-      };
       form.addEventListener('submit',handleSubmit);
-      responseFrame.addEventListener('load',handleResponse);
       cleanups.push(()=>form.removeEventListener('submit',handleSubmit));
-      cleanups.push(()=>responseFrame.removeEventListener('load',handleResponse));
-      cleanups.push(()=>responseFrame.remove());
     }
 
     return ()=>cleanups.forEach(cleanup=>cleanup());
