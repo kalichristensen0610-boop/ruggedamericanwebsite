@@ -1,46 +1,41 @@
 'use client';
 
-import {useEffect,useRef,useState} from 'react';
+import {useRef,useState} from 'react';
 import {Button} from './ui/button';
 
 const services=['Gutter installation','Gutter repair','Gutter guards','Gutter cleaning','Exterior painting','Interior painting','Cabinet painting','Roofing inspection','Roofing cash bid','Roofing insurance assistance','Fencing','Other exterior service'];
 
 export function EstimateForm({compact=false}:{compact?:boolean}){
   const formRef=useRef<HTMLFormElement>(null);
+  const awaitingResponse=useRef(false);
   const [state,setState]=useState<'idle'|'sending'|'success'|'error'>('idle');
   const [message,setMessage]=useState('');
   const [startedAt,setStartedAt]=useState(()=>Date.now());
 
-  async function submit(form:HTMLFormElement){
+  function submit(){
+    awaitingResponse.current=true;
     setState('sending');
     setMessage('Sending your request securely…');
+  }
+
+  function receiveResponse(event:React.SyntheticEvent<HTMLIFrameElement>){
+    if(!awaitingResponse.current) return;
+    awaitingResponse.current=false;
     try{
-      const response=await fetch('/api/estimate',{method:'POST',body:new FormData(form)});
-      const result=await response.json().catch(()=>({message:'The server returned an unexpected response. Please call (817) 512-9879.'}));
-      setMessage(result.message);
-      setState(response.ok?'success':'error');
-      if(response.ok){
-        form.reset();
-        setStartedAt(Date.now());
-      }
+      const frame=event.currentTarget;
+      const text=frame.contentDocument?.body.textContent||'';
+      const result=JSON.parse(text) as {success?:boolean;message?:string};
+      const successful=result.success===true;
+      setMessage(result.message||'The server returned an unexpected response. Please call (817) 512-9879.');
+      setState(successful?'success':'error');
+      if(successful){formRef.current?.reset();setStartedAt(Date.now());}
     }catch{
       setState('error');
-      setMessage('Your request could not be sent. Check your connection, try again, or call (817) 512-9879.');
+      setMessage('Your request could not be confirmed. Please call (817) 512-9879 so we can help.');
     }
   }
 
-  useEffect(()=>{
-    const handleSubmit=(event:SubmitEvent)=>{
-      const form=formRef.current;
-      if(!form||event.target!==form) return;
-      event.preventDefault();
-      void submit(form);
-    };
-    window.addEventListener('submit',handleSubmit);
-    return ()=>window.removeEventListener('submit',handleSubmit);
-  });
-
-  return <form ref={formRef} id="estimate-form" name="estimate_request" method="post" action="/api/estimate" className="mt-6 grid gap-4" encType="multipart/form-data">
+  return <><form ref={formRef} id="estimate-form" name="estimate_request" method="post" action="/api/estimate" target="estimate-form-response" onSubmit={submit} className="mt-6 grid gap-4" encType="multipart/form-data">
     <div className={compact?'grid gap-4 sm:grid-cols-2':'grid gap-4 md:grid-cols-2'}>
       <Field label="Name" name="name" autoComplete="name" required/>
       <Field label="Phone" name="phone" type="tel" autoComplete="tel" required/>
@@ -71,7 +66,7 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
     <Button disabled={state==='sending'} type="submit">{state==='sending'?'Sending…':'Request my free estimate'}</Button>
     {state!=='idle'&&<p role="status" aria-live="polite" className={state==='success'?'border-l-4 border-green-700 bg-green-50 p-3 font-bold text-green-900':state==='error'?'border-l-4 border-red-700 bg-red-50 p-3 font-bold text-red-900':'font-bold text-ink/65'}>{message}</p>}
     <p className="text-xs text-ink/55">Required fields must be completed. Photos may be JPG, PNG, or WebP up to 8 MB. Your information is sent securely to Rugged American Exteriors so we can respond to your request.</p>
-  </form>;
+  </form><iframe className="hidden" name="estimate-form-response" title="Estimate form response" onLoad={receiveResponse}/></>;
 }
 
 function Field({label,name,type='text',required,autoComplete}:{label:string;name:string;type?:string;required?:boolean;autoComplete?:string}){

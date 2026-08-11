@@ -60,21 +60,34 @@ export function LandingPageClient({html}:{html:string}){
       attributionFields.forEach(field=>ensureHidden(field,params.get(field)||''));
       ensureHidden('landing_page','estimate-a');
 
-      const handleSubmit=async(event:SubmitEvent)=>{
-        if(event.target!==form) return;
-        event.preventDefault();
+      const responseFrame=document.createElement('iframe');
+      responseFrame.name='estimate-a-response';
+      responseFrame.title='Estimate form response';
+      responseFrame.hidden=true;
+      root.appendChild(responseFrame);
+      form.target=responseFrame.name;
+      let awaitingResponse=false;
+
+      const handleSubmit=()=>{
         if(!form.reportValidity()) return;
+        awaitingResponse=true;
         const status=form.querySelector<HTMLElement>('.rae-form-status');
         const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
-        const fields=new FormData(form);
-        fields.set('name',`${fields.get('first_name')||''} ${fields.get('last_name')||''}`.trim());
+        ensureHidden('name',`${(form.elements.namedItem('first_name') as HTMLInputElement)?.value||''} ${(form.elements.namedItem('last_name') as HTMLInputElement)?.value||''}`.trim());
         if(status){status.hidden=false;status.textContent='Sending your request securely…';}
         if(button){button.disabled=true;button.textContent='Sending…';}
+      };
+      const handleResponse=()=>{
+        if(!awaitingResponse) return;
+        awaitingResponse=false;
+        const status=form.querySelector<HTMLElement>('.rae-form-status');
+        const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
         try{
-          const response=await fetch('/api/estimate',{method:'POST',body:fields});
-          const result=await response.json().catch(()=>({message:'The server returned an unexpected response. Please call us so we can help.'}));
-          if(status) status.textContent=result.message;
-          if(response.ok){
+          const text=responseFrame.contentDocument?.body.textContent||'';
+          const result=JSON.parse(text) as {success?:boolean;message?:string};
+          const successful=result.success===true;
+          if(status) status.textContent=result.message||'The server returned an unexpected response. Please call us so we can help.';
+          if(successful){
             form.reset();
             attributionFields.forEach(field=>ensureHidden(field,params.get(field)||''));
             ensureHidden('landing_page','estimate-a');
@@ -83,13 +96,16 @@ export function LandingPageClient({html}:{html:string}){
             ensureHidden('startedAt',String(Date.now()));
           }
         }catch{
-          if(status) status.textContent='Your request could not be sent. Check your connection, try again, or call us directly.';
+          if(status) status.textContent='Your request could not be confirmed. Please try again or call us directly.';
         }finally{
           if(button){button.disabled=false;button.textContent='Get My Free Estimate';}
         }
       };
-      window.addEventListener('submit',handleSubmit);
-      cleanups.push(()=>window.removeEventListener('submit',handleSubmit));
+      form.addEventListener('submit',handleSubmit);
+      responseFrame.addEventListener('load',handleResponse);
+      cleanups.push(()=>form.removeEventListener('submit',handleSubmit));
+      cleanups.push(()=>responseFrame.removeEventListener('load',handleResponse));
+      cleanups.push(()=>responseFrame.remove());
     }
 
     return ()=>cleanups.forEach(cleanup=>cleanup());

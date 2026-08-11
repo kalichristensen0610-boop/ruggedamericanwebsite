@@ -166,7 +166,7 @@ export async function POST(req:Request){
       attachments:attachment?[attachment]:[],
     });
 
-    return NextResponse.json({message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
+    return NextResponse.json({success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
   }catch(error){
     console.error('Estimate form delivery failed.',error instanceof Error?error.message:'Unknown error');
     return NextResponse.json(
