@@ -26,11 +26,35 @@
   transition-timing-function: ease;
 }
 
+.motion-ready main > section:first-child {
+  animation: site-hero-background-drift 16s ease-in-out infinite alternate;
+}
+
+.motion-ready main > section:first-child img:not(.concrete-hero-image) {
+  animation: site-hero-image-drift 15s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.motion-ready main article img,
+.motion-ready main figure img {
+  transition: transform 650ms cubic-bezier(.2,.72,.2,1), filter 350ms ease;
+}
+
+.motion-ready main details summary span:last-child {
+  transition: transform 220ms ease, color 220ms ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .motion-ready main article:hover,
   .motion-ready #rae-landing-page .rae-service-card:hover,
   .motion-ready #rae-landing-page .rae-gallery-grid figure:hover {
     transform: translateY(-5px);
+  }
+
+  .motion-ready main article:hover img,
+  .motion-ready main figure:hover img {
+    transform: scale(1.045);
+    filter: saturate(1.05) contrast(1.02);
   }
 }
 
@@ -39,10 +63,83 @@
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
+@keyframes site-hero-background-drift {
+  from { background-position: 50% 50%; }
+  to { background-position: 54% 50%; }
+}
+
+@keyframes site-hero-image-drift {
+  from { transform: scale(1.01) translate3d(0,0,0); }
+  to { transform: scale(1.065) translate3d(-.8%,0,0); }
+}
+
+.motion-ready .concrete-hero-image {
+  animation: concrete-hero-drift 14s ease-in-out infinite alternate;
+  transform-origin: 65% 50%;
+}
+
+.motion-ready .concrete-hero-accent {
+  animation: concrete-accent-slide 5s cubic-bezier(.2,.72,.2,1) both;
+}
+
+.motion-ready .concrete-cta-arrow {
+  animation: concrete-arrow-nudge 1.8s ease-in-out infinite;
+}
+
+.motion-ready .concrete-service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.motion-ready .concrete-service-card::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: #f45514;
+  content: '';
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 260ms ease;
+}
+
+.motion-ready .concrete-process-card {
+  transition: border-color 220ms ease, background-color 220ms ease, transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-ready .concrete-service-card:hover::before { transform: scaleY(1); }
+  .motion-ready .concrete-process-card:hover { transform: translateY(-6px); border-color: #f45514; background: #332d28; }
+  .motion-ready .concrete-process-card:hover .concrete-step-number { background: #f45514; color: #201d1a; transform: rotate(-4deg) scale(1.08); }
+}
+
+.motion-ready .concrete-step-number {
+  transition: color 220ms ease, background-color 220ms ease, transform 220ms ease;
+}
+
+@keyframes concrete-hero-drift {
+  from { transform: scale(1.02) translate3d(0,0,0); }
+  to { transform: scale(1.08) translate3d(-1.2%,0,0); }
+}
+
+@keyframes concrete-accent-slide {
+  from { opacity: 0; transform: translate3d(28%,0,0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+
+@keyframes concrete-arrow-nudge {
+  0%, 55%, 100% { transform: translateX(0); }
+  70% { transform: translateX(5px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-ready .motion-reveal,
   .motion-ready .motion-reveal.motion-visible,
-  .motion-ready header {
+  .motion-ready header,
+  .motion-ready main > section:first-child,
+  .motion-ready main > section:first-child img,
+  .motion-ready .concrete-hero-image,
+  .motion-ready .concrete-hero-accent,
+  .motion-ready .concrete-cta-arrow {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
