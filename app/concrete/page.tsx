@@ -26,7 +26,7 @@ export const metadata:Metadata={
   openGraph:{
     title:'Concrete Contractor Fort Worth TX | Residential & Commercial | Rugged American Exteriors',
     description:'Concrete pouring, demolition, driveways, foundations, patios, pool decks, and decorative concrete across the Fort Worth area.',
-    images:[{url:'/service-images/concrete.png',alt:'Finished concrete patio and flatwork at a North Texas property'}],
+    images:[{url:'/service-images/concrete.webp',alt:'Finished concrete patio and flatwork at a North Texas property'}],
   },
 };
 
@@ -80,7 +80,7 @@ export default function ConcretePage(){
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 
     <section className="relative overflow-hidden bg-ink px-4 py-20 text-white md:py-28">
-      <Image src="/service-images/concrete.png" alt="Finished concrete patio and flatwork at a North Texas property" fill priority sizes="100vw" className="concrete-hero-image object-cover object-center"/>
+      <Image src="/service-images/concrete.webp" alt="Finished concrete patio and flatwork at a North Texas property" fill priority sizes="100vw" className="concrete-hero-image object-cover object-center"/>
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/20"/>
       <div className="concrete-hero-accent absolute inset-y-0 right-0 w-1/3 bg-oxide/15 [clip-path:polygon(55%_0,100%_0,100%_100%,0_100%)]" aria-hidden="true"/>
       <div className="grain absolute inset-0 opacity-20"/>
