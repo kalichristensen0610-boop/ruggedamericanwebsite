@@ -146,3 +146,22 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 639px) {
+  .motion-ready .motion-reveal,
+  .motion-ready .motion-reveal.motion-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .motion-ready main > section:first-child {
+    animation-duration: 22s;
+  }
+
+  .motion-ready main > section:first-child img,
+  .motion-ready .concrete-hero-image {
+    animation-duration: 22s;
+  }
+}
