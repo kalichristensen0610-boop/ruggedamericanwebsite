@@ -3,17 +3,36 @@
 import {useEffect,useState} from 'react';
 import {Button} from './ui/button';
 
-const services=['Gutter installation','Gutter repair','Gutter guards','Gutter cleaning','Exterior painting','Interior painting','Cabinet painting','Roofing inspection','Roofing cash bid','Roofing insurance assistance','Fencing','Other exterior service'];
+const serviceGroups={
+  Gutters:['Gutter installation','Gutter repair','Gutter guards','Gutter cleaning'],
+  Painting:['Exterior painting','Interior painting','Cabinet painting'],
+  Roofing:['Roofing inspection','Roofing cash bid','Roofing insurance assistance'],
+  Fencing:['Fence installation','Fence replacement','Fence repair'],
+  Concrete:['Concrete - tell us more','Concrete form setting or pouring','Concrete demolition','Residential concrete','Commercial concrete','Driveway or walkway','Slab or foundation','Decorative concrete','Patio or pool deck'],
+  Other:['Other exterior service'],
+} as const;
+
+type ServiceCategory=keyof typeof serviceGroups;
+const categories=Object.keys(serviceGroups) as ServiceCategory[];
+const allServices:string[]=categories.flatMap(category=>[...serviceGroups[category]]);
 
 export function EstimateForm({compact=false}:{compact?:boolean}){
   const [state,setState]=useState<'idle'|'sending'|'success'|'error'>('idle');
   const [message,setMessage]=useState('');
   const [startedAt]=useState(()=>Date.now());
   const [returnTo,setReturnTo]=useState('/');
+  const [category,setCategory]=useState<ServiceCategory|''>('');
+  const [service,setService]=useState('');
 
   useEffect(()=>{
     const url=new URL(window.location.href);
     const result=url.searchParams.get('estimate_status');
+    const requestedService=url.searchParams.get('service');
+    if(requestedService&&allServices.includes(requestedService)){
+      const requestedCategory=categories.find(group=>serviceGroups[group].some(option=>option===requestedService));
+      if(requestedCategory) setCategory(requestedCategory);
+      setService(requestedService);
+    }
     url.searchParams.delete('estimate_status');
     const cleanLocation=`${url.pathname}${url.search}`;
     setReturnTo(cleanLocation);
@@ -39,12 +58,22 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
       <Field label="Email" name="email" type="email" autoComplete="email" required/>
       <Field label="Property address or ZIP" name="address" autoComplete="street-address" required/>
     </div>
-    <label className="grid gap-1 text-sm font-bold">Service needed
-      <select name="service" required defaultValue="" className="focus-ring min-h-12 border border-ink/30 bg-white px-3">
-        <option value="" disabled>Select a service</option>
-        {services.map(service=><option key={service}>{service}</option>)}
-      </select>
-    </label>
+    <fieldset className="grid gap-4 border border-ink/20 bg-steel/60 p-4 md:grid-cols-2">
+      <legend className="px-2 text-sm font-black uppercase tracking-wide">Service needed</legend>
+      <label className="grid gap-1 text-sm font-bold">Project category
+        <select name="service_category" required value={category} onChange={event=>{setCategory(event.target.value as ServiceCategory);setService('');}} className="focus-ring min-h-12 border border-ink/30 bg-white px-3">
+          <option value="" disabled>Choose a category</option>
+          {categories.map(option=><option key={option}>{option}</option>)}
+        </select>
+      </label>
+      <label className="grid gap-1 text-sm font-bold">Specific service
+        <select name="service" required disabled={!category} value={service} onChange={event=>setService(event.target.value)} className="focus-ring min-h-12 border border-ink/30 bg-white px-3 disabled:cursor-not-allowed disabled:bg-ink/5 disabled:text-ink/45">
+          <option value="" disabled>{category?'Choose a specific service':'Choose a category first'}</option>
+          {category&&serviceGroups[category].map(option=><option key={option}>{option}</option>)}
+        </select>
+      </label>
+      <p className="text-xs text-ink/55 md:col-span-2">Choose the main project category first, then select the closest service. If you are unsure, choose the general option and describe the project below.</p>
+    </fieldset>
     <label className="grid gap-1 text-sm font-bold">Project details
       <textarea name="message" required minLength={10} maxLength={5000} rows={compact?3:5} className="focus-ring border border-ink/30 bg-white p-3"/>
     </label>
