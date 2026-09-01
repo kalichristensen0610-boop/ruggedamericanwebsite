@@ -50,6 +50,7 @@ function escapeHtml(value:string){
 }
 
 function publicOrigin(req:Request){
+  if(process.env.NODE_ENV==='production') return PUBLIC_SITE_ORIGIN;
   const configured=process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if(configured){
     try{
@@ -59,7 +60,6 @@ function publicOrigin(req:Request){
       console.error('NEXT_PUBLIC_SITE_URL is not a valid public URL.');
     }
   }
-  if(process.env.NODE_ENV==='production') return PUBLIC_SITE_ORIGIN;
   return new URL(req.url).origin;
 }
 
