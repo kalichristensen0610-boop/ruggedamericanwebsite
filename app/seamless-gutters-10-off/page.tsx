@@ -25,7 +25,7 @@ const benefits=[
 export default function SeamlessGuttersOffer(){
   return <>
     <section className="relative overflow-hidden bg-ink px-4 py-16 text-white md:py-24">
-      <Image src="/service-images/gutter-installation.webp" alt="Seamless gutters installed on a North Texas home" fill priority sizes="100vw" className="object-cover object-center"/>
+      <Image src="/gallery/dark-gutters-two-story-home.webp" alt="Dark seamless gutters installed on a two story North Texas home" fill priority sizes="100vw" className="object-cover object-center"/>
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/45"/>
       <div className="grain absolute inset-0 opacity-25"/>
       <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
@@ -68,7 +68,7 @@ export default function SeamlessGuttersOffer(){
 
     <section className="bg-steel px-4 py-20">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative min-h-[360px] overflow-hidden border-4 border-white shadow-[10px_10px_0_#201d1a] sm:min-h-[480px]"><Image src="/gallery/white-seamless-gutters-brick-home.webp" alt="Completed seamless gutter and downspout installation" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover"/></div>
+        <div className="relative min-h-[360px] overflow-hidden border-4 border-white shadow-[10px_10px_0_#201d1a] sm:min-h-[480px]"><Image src="/gallery/garage-seamless-gutter-installation.webp" alt="White seamless gutter and downspout installed above a garage" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-center"/></div>
         <div>
           <Eyebrow>FORMED AT YOUR HOME</Eyebrow>
           <h2 className="font-display text-4xl uppercase sm:text-6xl">Continuous gutter runs built for your house.</h2>
@@ -81,6 +81,20 @@ export default function SeamlessGuttersOffer(){
 
     <section className="bg-ink px-4 py-16 text-white">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-7 md:flex-row md:items-center"><div><p className="text-xs font-black uppercase tracking-[.22em] text-oxide">WE STAND BEHIND OUR WORK</p><h2 className="mt-3 max-w-4xl font-display text-4xl uppercase sm:text-5xl">Lifetime Workmanship Warranty on qualifying gutter installations.</h2><p className="mt-4 max-w-3xl text-white/70">This coverage applies to qualifying installation workmanship completed by Rugged American Exteriors and is separate from manufacturer and material warranties.</p></div><Button asChild><Link href="/contact">Request Warranty Terms</Link></Button></div>
+    </section>
+
+    <section className="bg-white px-4 py-20">
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow>REAL NORTH TEXAS INSTALLATIONS</Eyebrow>
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><h2 className="max-w-3xl font-display text-4xl uppercase sm:text-6xl">See the difference on real homes.</h2><p className="max-w-md text-ink/65">Authentic completed gutter projects from homes we have worked on.</p></div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {[
+            ['/gallery/bronze-gutters-brick-home.webp','Bronze seamless gutters installed on a brick home','Color matched seamless gutters'],
+            ['/gallery/dark-gutters-two-story-home.webp','Dark gutters installed along a two story roofline','Two story gutter installation'],
+            ['/gallery/front-porch-gutter-installation.webp','White gutters and downspouts installed on a brick home porch','Front porch gutter system'],
+          ].map(([src,alt,title])=><figure className="group overflow-hidden border border-ink/15 bg-white shadow-[6px_6px_0_#f3f0ec]" key={src}><div className="relative aspect-[4/3] overflow-hidden"><Image src={src} alt={alt} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105"/></div><figcaption className="border-t-4 border-oxide p-5 font-display text-2xl uppercase">{title}</figcaption></figure>)}
+        </div>
+      </div>
     </section>
 
     <ReviewsSection heading="North Texas homeowners trust our work."/>
