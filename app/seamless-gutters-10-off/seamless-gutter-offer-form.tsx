@@ -68,7 +68,7 @@ export function SeamlessGutterOfferForm(){
       </label>
       <label className="grid gap-1 text-sm font-bold">What do you need?
         <select name="project_type" required value={projectType} onChange={event=>setProjectType(event.target.value)} className="focus-ring min-h-12 border border-ink/30 bg-white px-3">
-          <option value="" disabled>Select one</option><option>New seamless gutter installation</option><option>Replace existing gutters</option><option>Not sure yet</option>
+          <option value="" disabled>Select one</option><option>New seamless gutter installation</option><option>Seamless gutter replacement</option>
         </select>
       </label>
       <label className="grid gap-1 text-sm font-bold">Best time of day to contact you
