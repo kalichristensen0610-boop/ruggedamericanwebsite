@@ -41,7 +41,7 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
       setMessage('Thank you. Your request was sent successfully. Our team will be in touch soon.');
     }else if(result==='error'){
       setState('error');
-      setMessage('We could not send your request. Please check the form and try again, or call (817) 512-9879.');
+      setMessage('We could not send your request. Please check the form and try again, or call (817) 262-7170.');
     }
     if(result) window.history.replaceState({},'',`${cleanLocation}${url.hash}`);
   },[]);

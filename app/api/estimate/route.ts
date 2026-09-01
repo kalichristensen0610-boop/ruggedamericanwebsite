@@ -64,7 +64,7 @@ export async function POST(req:Request){
     form=await req.formData();
     const limit=checkRateLimit(clientIp(req));
     if(!limit.allowed){
-      return respond(req,form,{message:'Too many requests were sent from this connection. Please wait a few minutes or call (817) 512-9879.'},429,{'Retry-After':String(limit.retryAfter)});
+      return respond(req,form,{message:'Too many requests were sent from this connection. Please wait a few minutes or call (817) 262-7170.'},429,{'Retry-After':String(limit.retryAfter)});
     }
 
     // Hidden honeypot. Bots receive a neutral response without triggering email.
@@ -89,7 +89,7 @@ export async function POST(req:Request){
 
     const elapsed=Date.now()-parsed.data.startedAt;
     if(elapsed<1500||elapsed>24*60*60*1000){
-      return respond(req,form,{message:'We could not verify this submission. Please refresh the page and try again, or call (817) 512-9879.'},400);
+      return respond(req,form,{message:'We could not verify this submission. Please refresh the page and try again, or call (817) 262-7170.'},400);
     }
 
     const photo=form.get('photo');
@@ -109,7 +109,7 @@ export async function POST(req:Request){
     const {SMTP_HOST,SMTP_PORT,SMTP_SECURE,SMTP_USER,SMTP_PASSWORD,SMTP_FROM_EMAIL}=process.env;
     if(!SMTP_HOST||!SMTP_USER||!SMTP_PASSWORD){
       console.error('Estimate email delivery is missing required SMTP environment variables.');
-      return respond(req,form,{message:'Email delivery is temporarily unavailable. Please call (817) 512-9879 so we can help you right away.'},503);
+      return respond(req,form,{message:'Email delivery is temporarily unavailable. Please call (817) 262-7170 so we can help you right away.'},503);
     }
 
     const transport=nodemailer.createTransport({
@@ -164,6 +164,6 @@ export async function POST(req:Request){
     return respond(req,form,{success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
   }catch(error){
     console.error('Estimate form delivery failed.',error instanceof Error?error.message:'Unknown error');
-    return respond(req,form,{message:'We could not send your request. Please try again or call (817) 512-9879.'},500);
+    return respond(req,form,{message:'We could not send your request. Please try again or call (817) 262-7170.'},500);
   }
 }
