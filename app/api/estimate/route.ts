@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer';
 export const runtime='nodejs';
 
 const DESTINATION_EMAIL='RuggedAmericanExteriors@gmail.com';
+const PUBLIC_SITE_ORIGIN='https://ruggedamericanexteriors.com';
 const RATE_LIMIT_WINDOW_MS=15*60*1000;
 const RATE_LIMIT_MAX=5;
 const allowedUploads=['image/jpeg','image/png','image/webp'];
@@ -48,10 +49,24 @@ function escapeHtml(value:string){
   return value.replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]||character));
 }
 
+function publicOrigin(req:Request){
+  const configured=process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if(configured){
+    try{
+      const url=new URL(configured);
+      if(url.protocol==='https:'||url.protocol==='http:') return url.origin;
+    }catch{
+      console.error('NEXT_PUBLIC_SITE_URL is not a valid public URL.');
+    }
+  }
+  if(process.env.NODE_ENV==='production') return PUBLIC_SITE_ORIGIN;
+  return new URL(req.url).origin;
+}
+
 function respond(req:Request,form:FormData|undefined,result:{success?:boolean;message:string;errors?:unknown},status=200,headers?:HeadersInit){
   const returnTo=String(form?.get('return_to')||'');
   if(returnTo.startsWith('/')&&!returnTo.startsWith('//')){
-    const destination=new URL(returnTo,req.url);
+    const destination=new URL(returnTo,`${publicOrigin(req)}/`);
     destination.searchParams.set('estimate_status',result.success?'success':'error');
     return NextResponse.redirect(destination,{status:303,headers});
   }

@@ -41,6 +41,12 @@ export function SeamlessGutterOfferForm(){
 
   const message=`10% off seamless gutter campaign. Project: ${projectType||'Not selected'}. Best contact time: ${contactTime||'Not selected'}. Approximate home size: ${squareFeet||'Not selected'}.`;
 
+  if(status==='success') return <div className="mt-7 border-l-8 border-green-700 bg-green-50 p-6 text-green-950" role="status" tabIndex={-1}>
+    <p className="text-xs font-black uppercase tracking-[.2em] text-green-800">Request received</p>
+    <h3 className="mt-2 font-display text-3xl uppercase">Thank you. We’ll be in contact soon.</h3>
+    <p className="mt-3 leading-7">Your seamless gutter estimate request was sent successfully. A member of the Rugged American Exteriors team will reach out to discuss your project.</p>
+  </div>;
+
   return <form ref={formRef} name="seamless_gutter_10_off" method="post" action="/api/estimate" encType="multipart/form-data" className="mt-6" onSubmit={()=>setStatus('sending')}>
     <div className="mb-6 grid grid-cols-2 gap-3" aria-label={`Step ${step} of 2`}><div className={`h-2 ${step>=1?'bg-oxide':'bg-ink/15'}`}/><div className={`h-2 ${step>=2?'bg-oxide':'bg-ink/15'}`}/></div>
 
@@ -88,7 +94,6 @@ export function SeamlessGutterOfferForm(){
     {attributionFields.map(field=><input type="hidden" name={field} value={attribution[field]||''} key={field}/>)}
     <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true"><label>Leave this field empty<input name="website" tabIndex={-1} autoComplete="off"/></label></div>
 
-    {status==='success'&&<p className="mt-5 border-l-4 border-green-700 bg-green-50 p-4 font-bold text-green-900" role="status">Thank you. Your request was sent successfully. Our team will be in touch soon.</p>}
     {status==='error'&&<p className="mt-5 border-l-4 border-red-700 bg-red-50 p-4 font-bold text-red-900" role="alert">We could not send your request. Please try again or call (817) 262-7170.</p>}
     <p className="mt-4 text-xs leading-5 text-ink/55">By submitting, you agree that Rugged American Exteriors may contact you about this request. Offer terms apply.</p>
   </form>;

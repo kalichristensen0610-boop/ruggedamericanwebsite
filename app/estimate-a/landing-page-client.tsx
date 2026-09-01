@@ -72,6 +72,13 @@ export function LandingPageClient({html}:{html:string}){
           status.textContent=result==='success'
             ?'Thank you. Your request was sent successfully. Our team will be in touch soon.'
             :'We could not send your request. Please check the form and try again, or call us directly.';
+          if(result==='success'){
+            Array.from(form.children).forEach(child=>{
+              if(child!==status) (child as HTMLElement).hidden=true;
+            });
+            status.setAttribute('tabindex','-1');
+            status.focus();
+          }
         }
         window.history.replaceState({},'',`${cleanLocation}${returnUrl.hash}`);
       }
