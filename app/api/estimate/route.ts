@@ -65,9 +65,19 @@ function publicOrigin(req:Request){
 
 function respond(req:Request,form:FormData|undefined,result:{success?:boolean;message:string;errors?:unknown},status=200,headers?:HeadersInit){
   const returnTo=String(form?.get('return_to')||'');
+  if(result.success){
+    const destination=new URL('/thank-you',`${publicOrigin(req)}/`);
+    const landingPage=String(form?.get('landing_page')||'').trim();
+    if(landingPage) destination.searchParams.set('source',landingPage);
+    attributionKeys.forEach(key=>{
+      const value=String(form?.get(key)||'').trim();
+      if(value) destination.searchParams.set(key,value);
+    });
+    return NextResponse.redirect(destination,{status:303,headers});
+  }
   if(returnTo.startsWith('/')&&!returnTo.startsWith('//')){
     const destination=new URL(returnTo,`${publicOrigin(req)}/`);
-    destination.searchParams.set('estimate_status',result.success?'success':'error');
+    destination.searchParams.set('estimate_status','error');
     return NextResponse.redirect(destination,{status:303,headers});
   }
   return NextResponse.json(result,{status,headers});
