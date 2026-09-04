@@ -24,17 +24,17 @@ const benefits=[
 
 export default function SeamlessGuttersOffer(){
   return <>
-    <section className="relative overflow-hidden bg-ink px-4 py-16 text-white md:py-24">
+    <section className="relative overflow-hidden bg-ink px-5 py-12 text-white sm:px-8 md:py-20">
       <Image src="/gallery/dark-gutters-two-story-home.webp" alt="Dark seamless gutters installed on a two story North Texas home" fill priority sizes="100vw" className="object-cover object-center"/>
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/45"/>
       <div className="grain absolute inset-0 opacity-25"/>
-      <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-        <div>
-          <div className="inline-flex border-2 border-oxide bg-oxide px-5 py-3 font-black uppercase tracking-[.16em] text-ink shadow-[6px_6px_0_rgba(255,255,255,.18)]">Limited offer: 10% off</div>
+      <div className="relative mx-auto grid max-w-7xl gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start xl:gap-20">
+        <div className="min-w-0 max-w-2xl xl:pt-8">
+          <div className="mb-8 inline-flex rounded-md border-2 border-oxide bg-oxide px-5 py-3 text-sm font-black uppercase tracking-[.12em] text-ink">Limited offer: 10% off</div>
           <Eyebrow>SEAMLESS GUTTER INSTALLATION</Eyebrow>
-          <h1 className="mt-3 max-w-4xl font-display text-5xl uppercase leading-[.9] sm:text-6xl lg:text-8xl">Protect your home and save 10%.</h1>
+          <h1 className="mt-4 max-w-xl font-display text-[clamp(2.25rem,4.5vw,4rem)] uppercase leading-[1.12] tracking-[-.025em]">Protect your home.<span className="mt-3 block text-oxide">Save 10%.</span></h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">Get seamless gutters measured, formed, and installed around your actual roofline by a local, family owned, veteran owned North Texas team.</p>
-          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-4">
             {benefits.slice(0,4).map(item=><li className="flex items-start gap-3 text-sm font-bold text-white/85" key={item}><Check className="mt-0.5 shrink-0 text-oxide" size={18}/>{item}</li>)}
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -43,10 +43,8 @@ export default function SeamlessGuttersOffer(){
           </div>
           <p className="mt-5 max-w-xl text-xs leading-5 text-white/55">Offer applies to qualifying seamless gutter installation projects completed by Rugged American Exteriors. Cannot be combined with other offers. Contact us for complete terms.</p>
         </div>
-        <div id="offer-form" className="scroll-mt-28 border-t-8 border-oxide bg-white p-6 text-ink shadow-[12px_12px_0_rgba(244,85,20,.3)] sm:p-8">
-          <p className="text-xs font-black uppercase tracking-[.22em] text-oxide">Free, no obligation estimate</p>
-          <h2 className="mt-2 font-display text-4xl uppercase">Tell us about your home.</h2>
-          <p className="mt-3 text-sm leading-6 text-ink/65">Start with your contact information, then answer a few quick project questions.</p>
+        <div id="offer-form" className="min-w-0 w-full max-w-2xl scroll-mt-28 rounded-2xl border-t-8 border-oxide bg-white p-6 text-ink shadow-[0_24px_70px_rgba(0,0,0,.3)] sm:p-10">
+          <h2 className="sr-only">Your free gutter estimate</h2>
           <SeamlessGutterOfferForm/>
         </div>
       </div>

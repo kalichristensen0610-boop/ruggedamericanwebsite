@@ -1,0 +1,28 @@
+.rae-wizard{color:#23201d;font-family:Arial,sans-serif;margin-top:24px;text-align:left;container-type:inline-size}
+.rae-wizard *{box-sizing:border-box}
+.rae-wizard .rae-wizard-step{font-size:14px;font-weight:800;margin:0 0 18px;color:#a1370d;text-transform:uppercase;letter-spacing:.12em}
+.rae-wizard .rae-wizard-progress{height:8px;background:#ecefee;border-radius:8px;overflow:hidden;margin-bottom:28px}
+.rae-wizard-progress span{display:block;height:100%;background:linear-gradient(90deg,#fd7b15,#ce420b);transition:width .2s ease}
+.rae-wizard .rae-wizard-title,#rae-landing-page .rae-wizard .rae-wizard-title{font:800 clamp(24px,5.4cqi,36px)/1.16 Arial,sans-serif;letter-spacing:normal;text-transform:uppercase;margin:0 0 16px;overflow-wrap:break-word}
+.rae-wizard .rae-wizard-hint{font-size:16px;line-height:1.5;margin:0 0 28px;color:#5c5752}
+.rae-wizard fieldset{border:0;padding:0;margin:0;min-width:0;display:grid;gap:14px}
+.rae-wizard fieldset[hidden]{display:none!important}
+.rae-wizard .rae-wizard-names{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rae-wizard .rae-wizard-field{display:grid;gap:10px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.rae-wizard .rae-wizard-field input{width:100%;min-width:0;min-height:60px;border:1px solid #d3d9d9;border-radius:11px;background:#fafbfb;color:#23201d;padding:14px 16px;font:600 16px/1.5 Arial,sans-serif;letter-spacing:normal;text-transform:none}
+.rae-wizard .rae-wizard-field input::placeholder{color:#737b80;opacity:1}
+.rae-wizard .rae-wizard-choices{display:grid;grid-template-columns:1fr;gap:12px}
+.rae-wizard .rae-wizard-choice{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px;border:1px solid #bcb6af;border-radius:8px;cursor:pointer;background:white;font:600 16px/1.4 Arial,sans-serif}
+.rae-wizard .rae-wizard-choice input{width:18px;height:18px;min-height:0;flex:0 0 18px;accent-color:#b53b0b;margin:0}
+.rae-wizard .rae-wizard-selected{border:2px solid #b53b0b;padding:11px;background:#fff2eb}
+.rae-wizard .rae-wizard-actions{display:flex;gap:14px;margin-top:28px;padding:0 5px 5px 0}
+.rae-wizard .rae-wizard-actions button{min-height:62px;padding:14px 18px;border-radius:8px;cursor:pointer;font:800 18px/1.4 Arial,sans-serif}
+.rae-wizard .rae-wizard-next{flex:1;background:#fd5a15;border:2px solid #fd5a15;color:#23201d;box-shadow:5px 5px 0 #23201d;text-transform:uppercase;letter-spacing:.04em}
+.rae-wizard .rae-wizard-back{background:white;border:1px solid #aaa;color:#23201d}
+.rae-wizard button:disabled{opacity:.65;cursor:wait}
+.rae-wizard :focus-visible{outline:3px solid #23201d;outline-offset:3px}
+.rae-wizard .rae-wizard-note{font:400 12px/1.6 Arial,sans-serif;margin:16px 0 0;color:#655e57;text-align:center}
+.rae-wizard .rae-wizard-sr{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:380px){.rae-wizard .rae-wizard-names{grid-template-columns:1fr}}
+@container(min-width:420px){.rae-wizard .rae-wizard-choices{grid-template-columns:1fr 1fr}.rae-wizard .rae-wizard-choice{min-height:64px}}
+@media(prefers-reduced-motion:reduce){.rae-wizard-progress span{transition:none}}
