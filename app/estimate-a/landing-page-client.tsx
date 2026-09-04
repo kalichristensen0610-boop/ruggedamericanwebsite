@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useMemo,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {GutterEstimateSteps} from '@/components/gutter-estimate-steps';
 
@@ -8,6 +8,8 @@ import {GutterEstimateSteps} from '@/components/gutter-estimate-steps';
 export function LandingPageClient({html}:{html:string}){
   const container=useRef<HTMLDivElement>(null);
   const [mount,setMount]=useState<HTMLElement|null>(null);
+  // Keep the injected DOM stable when the portal mount becomes available.
+  const landingMarkup=useMemo(()=><div ref={container} dangerouslySetInnerHTML={{__html:html}}/>,[html]);
 
   useEffect(()=>{
     const root=container.current?.querySelector<HTMLElement>('#rae-landing-page');
@@ -43,5 +45,5 @@ export function LandingPageClient({html}:{html:string}){
     return ()=>cleanups.forEach(cleanup=>cleanup());
   },[]);
 
-  return <><div ref={container} dangerouslySetInnerHTML={{__html:html}}/>{mount&&createPortal(<GutterEstimateSteps campaign="estimate-a"/>,mount)}</>;
+  return <>{landingMarkup}{mount&&createPortal(<GutterEstimateSteps campaign="estimate-a"/>,mount)}</>;
 }
