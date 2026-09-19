@@ -82,7 +82,7 @@ export function FallGutterOfferPage({campaign,badge,headline,highlight,descripti
           <div className="mt-8 flex flex-wrap gap-3"><Button asChild><a href="#fall-offer-form">{cta} <ArrowRight size={16}/></a></Button><Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> Call {business.phone}</a></Button></div>
           <p className="mt-5 max-w-xl text-xs leading-5 text-white/55">{terms}</p>
         </div>
-        <div id="fall-offer-form" className="min-w-0 w-full max-w-2xl scroll-mt-28 rounded-2xl border-t-8 border-oxide bg-white p-6 text-ink shadow-[0_24px_70px_rgba(0,0,0,.35)] sm:p-10"><h2 className="sr-only">Your free gutter estimate</h2><GutterEstimateSteps campaign={campaign}/></div>
+    <div id="fall-offer-form" className="min-w-0 w-full max-w-2xl scroll-mt-28 rounded-2xl border-t-8 border-oxide bg-white p-6 text-ink shadow-[0_24px_70px_rgba(0,0,0,.35)] sm:p-10"><h2 className="sr-only">Your free gutter estimate</h2><GutterEstimateSteps campaign={campaign as 'estimate-a'|'seamless-gutters-10-off'}/></div>
       </div>
     </section>
 
