@@ -3,7 +3,11 @@
 import {usePathname} from 'next/navigation';
 import {Footer,Header,PersistentActions} from './site';
 
-const standaloneRoutes=new Set(['/estimate-a']);
+const standaloneRoutes=new Set([
+  '/estimate-a',
+  '/beat-the-leaves-15-off',
+  '/fall-seamless-gutters-500-off',
+]);
 
 export function SiteShell({children}:{children:React.ReactNode}){
   const pathname=usePathname();
