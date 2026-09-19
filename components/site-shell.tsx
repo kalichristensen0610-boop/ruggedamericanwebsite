@@ -7,6 +7,7 @@ const standaloneRoutes=new Set([
   '/estimate-a',
   '/beat-the-leaves-15-off',
   '/fall-seamless-gutters-500-off',
+  '/concrete-estimate',
 ]);
 
 export function SiteShell({children}:{children:React.ReactNode}){
@@ -22,3 +23,4 @@ export function SiteShell({children}:{children:React.ReactNode}){
     <PersistentActions/>
   </div>;
 }
+
