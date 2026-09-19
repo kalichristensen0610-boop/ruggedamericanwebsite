@@ -4,7 +4,7 @@ import {useEffect,useRef,useState} from 'react';
 import './gutter-estimate-steps.css';
 
 const attributionKeys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid','msclkid'];
-const titles=['Let’s start your free estimate','What are you planning?','When do you need it?','A few project details'];
+const titles=['Let’s start your free estimate','What are you planning?','When do you need it?','Tell us about your project'];
 
 export function ConcreteEstimateSteps(){
   const formRef=useRef<HTMLFormElement>(null);
@@ -33,10 +33,7 @@ export function ConcreteEstimateSteps(){
     `Property type: ${values.property_type||''}`,
     `Concrete project: ${values.project_type||''}`,
     `Timeline: ${values.project_timeline||''}`,
-    `Approximate size: ${values.project_size||'Not provided'}`,
-    `Special finish: ${values.special_finish||'Not provided'}`,
-    `Site access: ${values.site_access||'Not provided'}`,
-    `Additional notes: ${values.notes||'None provided'}`,
+    `Project details: ${values.notes||'None provided'}`,
   ].join('\n');
 
   return <form ref={formRef} className="rae-wizard" name="concrete_estimate" method="post" action="/api/estimate" encType="multipart/form-data" noValidate onSubmit={event=>{
@@ -50,7 +47,7 @@ export function ConcreteEstimateSteps(){
     <div className="rae-wizard-progress" role="progressbar" aria-label="Concrete estimate progress" aria-valuemin={1} aria-valuemax={4} aria-valuenow={step+1}><span style={{width:`${(step+1)*25}%`}}/></div>
     <p className="rae-wizard-step" aria-live="polite">Step {step+1} of 4</p>
     <h3 className="rae-wizard-title" tabIndex={-1}>{titles[step]}</h3>
-    <p className="rae-wizard-hint">{step===0?'Tell us who we should contact.':step===1?'Choose the closest match—we can help refine the scope.':step===2?'An estimate is still free if you are only planning.':'The more you share, the better prepared we can be.'}</p>
+    <p className="rae-wizard-hint">{step===0?'Tell us who we should contact.':step===1?'Choose the closest match—we can help refine the scope.':step===2?'An estimate is still free if you are only planning.':'Keep it simple—tell us the location and what you would like done.'}</p>
 
     <fieldset hidden={step!==0}><legend className="rae-wizard-sr">Contact information</legend><div className="rae-wizard-names">{field('First name','first_name','text','given-name')}{field('Last name','last_name','text','family-name')}</div>{field('Email address','email','email','email')}{field('Phone number','phone','tel','tel')}</fieldset>
 
@@ -58,7 +55,7 @@ export function ConcreteEstimateSteps(){
 
     <fieldset hidden={step!==2}><legend className="rae-wizard-sr">Project timing</legend>{choices('project_timeline',['As soon as possible','Within 30 days','1–3 months','3–6 months','Just planning / Getting prices'])}</fieldset>
 
-    <fieldset hidden={step!==3}><legend className="rae-wizard-sr">Project details</legend>{field('Project address or ZIP','address','text','street-address')}<div className="rae-wizard-names">{field('Approximate size or dimensions','project_size','text',undefined,false)}{field('Special finish or color','special_finish','text',undefined,false)}</div><label className="rae-wizard-field">Site access<select value={values.site_access||''} onChange={event=>update('site_access',event.target.value)}><option value="">Choose one</option><option>Easy open access</option><option>Gate or narrow access</option><option>Backyard access</option><option>Not sure</option></select></label><label className="rae-wizard-field">Anything else we should know?<textarea rows={4} value={values.notes||''} onChange={event=>update('notes',event.target.value)} placeholder="Drainage concerns, demolition needs, slope, photos, or other details"/></label><label className="rae-wizard-field">Optional project photo<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"/></label></fieldset>
+    <fieldset hidden={step!==3}><legend className="rae-wizard-sr">Project details</legend><label className="rae-wizard-field">Tell us a little about the project<textarea name="project_details" rows={7} required value={values.notes||''} onChange={event=>update('notes',event.target.value)} placeholder="Example: We need a stamped patio at our home in Fort Worth. It is roughly 15 × 20 feet, with easy backyard access."/></label><label className="rae-wizard-field">Add a photo if you have one (optional)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"/></label></fieldset>
 
     <div className="rae-wizard-actions">{step>0&&<button type="button" className="rae-wizard-back" disabled={sending} onClick={()=>go(step-1)}>Back</button>}<button className="rae-wizard-next" type="submit" disabled={sending}>{sending?'Sending…':step<3?'Next →':'Get My Free Estimate'}</button></div>
     <input type="hidden" name="name" value={`${values.first_name||''} ${values.last_name||''}`.trim()}/><input type="hidden" name="service" value={values.project_type||''}/><input type="hidden" name="message" value={message}/><input type="hidden" name="contact" value="Phone"/><input type="hidden" name="startedAt" value={startedAt}/><input type="hidden" name="return_to" value={returnTo}/><input type="hidden" name="landing_page" value="concrete-estimate"/>
