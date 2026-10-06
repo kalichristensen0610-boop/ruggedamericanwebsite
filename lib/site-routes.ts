@@ -6,6 +6,7 @@ export const primaryPages=[
   {name:'Gallery',href:'/gallery'},
   {name:'Reviews',href:'/reviews'},
   {name:'Contact',href:'/contact'},
+  {name:'Financing',href:'/financing'},
   {name:'Service Areas',href:'/service-areas'},
 ];
 

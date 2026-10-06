@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {Button} from '@/components/ui/button';
+
+export function FinancingBanner(){return <section aria-label="Home improvement financing" className="border-y border-oxide/25 bg-[#f4eadc] px-4 py-9"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 md:flex-row md:items-center"><div><p className="text-sm font-black uppercase tracking-wider text-oxide">Now offering financing through Enhancify</p><h2 className="mt-2 text-2xl font-black text-ink sm:text-3xl">Your next home project, with more ways to pay.</h2><p className="mt-2 text-base leading-7 text-ink/75">Financing up to $200,000. 0% APR options for up to 24 months for qualified customers.</p><p className="mt-2 text-xs leading-5 text-ink/60">Subject to credit approval. Amounts, promotional terms, and availability vary by lender and applicant.</p></div><Button asChild className="shrink-0"><Link href="/financing">Explore Financing</Link></Button></div></section>}
