@@ -9,6 +9,8 @@ const serviceGroups={
   Roofing:['Roofing inspection','Roofing cash bid','Roofing insurance assistance'],
   Fencing:['Fence installation','Fence replacement','Fence repair'],
   Concrete:['Concrete - tell us more','Concrete form setting or pouring','Concrete demolition','Residential concrete','Commercial concrete','Driveway or walkway','Slab or foundation','Decorative concrete','Patio or pool deck'],
+  'Patio Covers':['Attached patio cover','Freestanding patio cover','Patio cover - tell us more'],
+  'Metal Shops & Fabrication':['Metal shop building','Workshop or storage building','Custom metal fabrication'],
   Other:['Other exterior service'],
 } as const;
 

@@ -2,7 +2,7 @@ import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {allServices} from '@/lib/data';
+import {allServices,serviceImages} from '@/lib/data';
 import {PageHero, Checklist, CTA, Eyebrow} from '@/components/sections';
 import {Button} from '@/components/ui/button';
 
@@ -67,7 +67,7 @@ export default async function Service({params}: {params: Promise<{slug: string}>
 
   return (
     <>
-      <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} />
+      <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} image={serviceImages[slug]} />
       <section className="px-4 py-20">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
