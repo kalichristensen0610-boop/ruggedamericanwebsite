@@ -1,0 +1,41 @@
+/* Rugged American: charcoal surfaces and the original orange. */
+:root{color-scheme:dark}
+body.rae-dark{background:#171614;color:#f7f4ef}
+.rae-dark .bg-white,.rae-dark .bg-cream,.rae-dark .bg-warm{background-color:#24221f;color:#f7f4ef}
+.rae-dark .bg-steel,.rae-dark [class~="bg-[#faf9f6]"],.rae-dark [class~="bg-[#f4eadc]"],.rae-dark [class~="bg-[#fff6ef]"],.rae-dark [class~="bg-[#f4f1eb]"],.rae-dark [class~="bg-[#fff0e8]"]{background-color:#1c1b19;color:#f7f4ef}
+.rae-dark [class~="bg-white/65"],.rae-dark [class~="bg-white/80"],.rae-dark [class~="bg-steel/60"]{background-color:#2c2925}
+.rae-dark .text-ink{color:#f7f4ef}
+.rae-dark [class~="text-ink/85"],.rae-dark [class~="text-ink/80"],.rae-dark [class~="text-ink/75"]{color:#e0dcd5}
+.rae-dark [class~="text-ink/70"],.rae-dark [class~="text-ink/65"],.rae-dark [class~="text-ink/60"]{color:#c6c0b7}
+.rae-dark [class~="text-ink/55"],.rae-dark [class~="text-ink/50"],.rae-dark [class~="text-ink/45"]{color:#b8b0a5}
+.rae-dark [class*="border-ink/"]{border-color:#ffffff24}
+.rae-dark input,.rae-dark select,.rae-dark textarea{color-scheme:dark;color:#f7f4ef;background:#302c27;border-color:#ffffff38}
+.rae-dark input::placeholder,.rae-dark textarea::placeholder{color:#b8b0a5}
+.rae-dark .text-oxide,.rae-dark [class~="text-[#b83e12]"],.rae-dark .rae-home .text-oxide,.rae-dark .rae-page-hero .text-oxide{color:#ff8b4e}
+.rae-dark .bg-oxide,.rae-dark .bg-oxide.text-ink,.rae-dark .rae-home a.bg-oxide{background-color:#f45514;color:#201d1a}
+.rae-dark .bg-oxide [class*="text-ink/"]{color:#201d1ae0}
+.rae-dark .rae-header{background:#191816;border-color:#ffffff24;color:#f7f4ef}
+.rae-dark .rae-header a[aria-label="Rugged American Exteriors home"],.rae-dark .rae-footer>div>div:first-child>a{background:white;padding:10px;border-radius:5px}
+.rae-dark .rae-header nav button:hover,.rae-dark .rae-header nav>a:hover,.rae-dark .rae-footer a:hover{color:#ff8b4e}
+.rae-dark .rae-home-hero{background:radial-gradient(ellipse at top right,#3b2d20,#171614 65%)}
+.rae-dark .rae-home .brand-shadow,.rae-dark .brand-shadow,.rae-dark .brand-shadow-lg{box-shadow:0 8px 28px #0004}
+.rae-dark .rae-footer{background:#151412;color:#f7f4ef}
+.rae-dark .hover\:bg-steel:hover{background:#38322b}
+.rae-dark .hover\:bg-white:hover{background:#38322b;color:#f7f4ef}
+.rae-dark .hover\:text-ink:hover{color:#f7f4ef}
+.rae-dark .bg-green-50{background:#123421;color:#daf5df}
+.rae-dark .bg-red-50{background:#411d1d;color:#ffe0e0}
+.rae-dark [class~="bg-ink/5"]{background:#302c27}
+.rae-dark .rae-page-hero{background:#1c1b19}
+.rae-dark .rae-home-hero .border{border-color:#ffffff24}
+.rae-dark .rae-home-hero [class~="text-[#b83e12]"]{color:#ff8b4e}
+.rae-dark .rae-wizard{color:#f7f4ef}
+.rae-dark .rae-wizard .rae-wizard-field input,.rae-dark .rae-wizard .rae-wizard-field textarea,.rae-dark .rae-wizard .rae-wizard-choice,.rae-dark .rae-wizard .rae-wizard-back{background:#302c27;color:#f7f4ef;border-color:#ffffff38}
+.rae-dark .rae-wizard .rae-wizard-selected{background:#55301f;border-color:#ff8b4e}
+.rae-dark .rae-wizard .rae-wizard-hint,.rae-dark .rae-wizard .rae-wizard-note{color:#c6c0b7}
+.rae-dark .rae-wizard .rae-wizard-step{color:#ff8b4e}
+.rae-dark .rae-wizard :focus-visible{outline-color:#ff8b4e}
+.rae-dark #rae-landing-page{background:#171614;color:#f7f4ef}
+.rae-dark #rae-landing-page .rae-form-wrapper,.rae-dark #rae-landing-page .rae-card,.rae-dark #rae-landing-page .rae-review-card,.rae-dark #rae-landing-page .rae-contact{background:#24221f;color:#f7f4ef;box-shadow:0 8px 28px #0004}
+.rae-dark #rae-landing-page .rae-card p,.rae-dark #rae-landing-page .rae-form-wrapper p{color:#c6c0b7}
+.rae-dark [class~="bg-white/90"]{background:#24221fe8}
