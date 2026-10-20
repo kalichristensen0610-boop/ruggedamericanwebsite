@@ -1,4 +1,6 @@
 import type {Metadata} from 'next';
+import {pageMetadata} from '@/lib/social-metadata';
+import {ServiceProjectPhotos} from '@/components/service-project-photos';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -19,16 +21,7 @@ import {Button} from '@/components/ui/button';
 import {Eyebrow} from '@/components/sections';
 import {business} from '@/lib/data';
 
-export const metadata:Metadata={
-  title:'Concrete Contractor Fort Worth TX | Residential & Commercial',
-  description:'Rugged American Exteriors provides residential and commercial concrete, form setting, pouring, demolition, driveways, walkways, slabs, foundations, patios, pool decks, and decorative concrete across the Fort Worth area.',
-  alternates:{canonical:'/concrete'},
-  openGraph:{
-    title:'Concrete Contractor Fort Worth TX | Residential & Commercial | Rugged American Exteriors',
-    description:'Concrete pouring, demolition, driveways, foundations, patios, pool decks, and decorative concrete across the Fort Worth area.',
-    images:[{url:'/service-images/concrete.webp',alt:'Finished concrete patio and flatwork at a North Texas property'}],
-  },
-};
+export const metadata:Metadata=pageMetadata('Concrete | DFW Exterior Services','Concrete driveways, patios, walkways, slabs, and more from a local, family and veteran owned Dallas Fort Worth exterior company.','/concrete');
 
 const services=[
   ['Form Setting / Pouring','Careful layout, form setting, concrete placement, and finishing for a clean, dependable result.'],
@@ -101,7 +94,7 @@ export default function ConcretePage(){
       </div>
     </section>
 
-    <section className="px-4 py-20">
+    <ServiceProjectPhotos service="concrete"/><section className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
         <Eyebrow>BUILT AROUND YOUR PROPERTY</Eyebrow>
         <div className="grid gap-6 lg:grid-cols-[1fr_.65fr] lg:items-end"><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Services</h2><p className="text-ink/70">Concrete preparation, installation, removal, and finishing for residential and commercial properties.</p></div>

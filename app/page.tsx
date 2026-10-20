@@ -1,3 +1,4 @@
+import {pageMetadata} from '@/lib/social-metadata';
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ import {ServiceAreaMap} from '@/components/service-area-map';
 import {EstimateForm} from '@/components/estimate-form';
 import {business,gutters,other} from '@/lib/data';
 
-export const metadata:Metadata={title:'DFW Exterior Services | Gutters, Concrete & Patio Covers',description:'Family and veteran owned exterior services in Dallas Fort Worth. Seamless gutters, concrete, patio covers, fencing, roofing, metal shops, and painting. Request a free estimate.'};
+export const metadata:Metadata=pageMetadata('DFW Exterior Services','Gutters, concrete, patio covers, roofing, fencing, metal shops, and painting. Family and veteran owned. Request a free estimate.','/');
 const featured=[gutters[0],other[2],other[3],other[1],other[0],other[4]];
 const steps=[['Let’s talk about your project','Tell us what you have in mind. We’ll look at the property, answer your questions, and talk through your options.'],['Know the plan before we start','We’ll outline the scope, materials, pricing, and next steps so you can make a comfortable decision.'],['Build it. Walk it. Stand behind it.','We coordinate the work, keep you informed, and review the finished project with you.']];
 const faqs=[['What exterior services do you offer?','We install and service seamless gutters, pour concrete, build patio covers and metal shops, and help with roofing, fencing, and painting. Tell us about your project and we’ll confirm the right scope for your property.'],['Can I combine more than one project?','Absolutely. If you’re planning a new patio and cover, a slab and metal shop, or gutters with exterior painting, we can discuss the projects together and outline how the work will be coordinated.'],['Where do you work?','We serve homeowners and businesses across Dallas Fort Worth, including Burleson, Crowley, Joshua, Mansfield, Fort Worth, Cleburne, Arlington, and nearby communities. Contact us to confirm coverage for your address.'],['Do you offer financing?','Yes. Financing is available through Enhancify for qualified customers. Amounts, rates, and promotional terms vary by lender and applicant. Visit our financing page to explore options and apply.'],['Is the estimate free?','Yes. Reach out with your project details to request a free estimate. We’ll talk through what you need and the next step.']];

@@ -1,8 +1,9 @@
+import {pageMetadata} from '@/lib/social-metadata';
 import type {Metadata} from 'next';
 import {PageHero,CTA,Eyebrow} from '@/components/sections';
 import {AreaLinks} from '@/components/site';
 import {ServiceAreaMap} from '@/components/service-area-map';
 
-export const metadata:Metadata={title:'DFW Service Areas',description:'Explore gutter installation, repair, guards, cleaning, painting, roofing, and fencing service areas around Burleson and Dallas Fort Worth.'};
+export const metadata:Metadata=pageMetadata('Service Areas | DFW Exterior Services','Explore gutter, concrete, patio cover, roofing, fencing, and exterior services across Dallas Fort Worth.','/service-areas');
 
 export default function Areas(){return <><PageHero eyebrow="ACROSS THE METROPLEX" title="Local service, wherever home is." desc="Explore the communities Rugged American Exteriors serves around Burleson and across the Dallas Fort Worth Metroplex."/><section className="px-4 py-20"><div className="mx-auto max-w-7xl"><Eyebrow>INTERACTIVE SERVICE AREA MAP</Eyebrow><div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end"><h2 className="max-w-3xl font-display text-4xl uppercase md:text-6xl">Centered in Burleson. Serving the Metroplex.</h2><p className="max-w-md text-ink/65">Choose a city marker to open its local service information. Call us if your community is nearby but not shown.</p></div><ServiceAreaMap/><section className="mt-14 border-t-4 border-oxide bg-white p-6 sm:p-8" aria-labelledby="written-service-areas"><h2 id="written-service-areas" className="font-display text-3xl uppercase">Written service area directory</h2><p className="mt-3 max-w-3xl text-ink/65">Every community below has a dedicated page with local gutter service information.</p><div className="mt-6"><AreaLinks/></div></section><p className="mt-8 max-w-3xl text-ink/65">Don’t see your city? Call to confirm availability. We plan routes around project scope and current scheduling across the Metroplex.</p></div></section><CTA/></>}

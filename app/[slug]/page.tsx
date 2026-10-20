@@ -1,3 +1,5 @@
+import {pageMetadata} from '@/lib/social-metadata';
+import {ServiceProjectPhotos} from '@/components/service-project-photos';
 import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
 import Link from 'next/link';
@@ -15,11 +17,8 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
   const service = allServices.find((item) => item.slug === slug);
   if (!service) return {};
 
-  return {
-    title: `${service.name} in Dallas Fort Worth`,
-    description: `${service.desc} Free estimates from a local, family owned, veteran owned DFW exterior company.`,
-    alternates: {canonical: `/${slug}`},
-  };
+  return pageMetadata(`${service.name} | DFW Exterior Services`,`${service.desc} Free estimates from a local, family owned, veteran owned DFW exterior company.`,`/${slug}`);
+
 }
 
 export default async function Service({params}: {params: Promise<{slug: string}>}) {
@@ -68,7 +67,7 @@ export default async function Service({params}: {params: Promise<{slug: string}>
   return (
     <>
       <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} image={serviceImages[slug]} />
-      <section className="px-4 py-20">
+      <ServiceProjectPhotos service={slug}/><section className="px-4 py-20">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
             <Eyebrow>WHAT’S INCLUDED</Eyebrow>

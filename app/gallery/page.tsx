@@ -1,11 +1,9 @@
+import {pageMetadata} from '@/lib/social-metadata';
 import type {Metadata} from 'next';
 import {PageHero} from '@/components/sections';
 import {ProjectGallery} from '@/components/project-gallery';
 
-export const metadata: Metadata = {
-  title: 'Our Work',
-  description: 'Browse roofing footage, gutter installations, concrete work, and site preparation by Rugged American Exteriors across Dallas Fort Worth.',
-};
+export const metadata:Metadata=pageMetadata('Our Work | DFW Exterior Services','Explore real project photos and roofing footage from Rugged American Exteriors across Dallas Fort Worth.','/gallery');
 
 const newProjects = [
   {
@@ -133,6 +131,30 @@ const newProjects = [
     "title": "Side roofline and downspout installation",
     "category": "Gutters",
     "alt": "Side roofline and downspout installation by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/wide-concrete-driveway.webp",
+    "title": "Fresh concrete driveway",
+    "category": "Concrete",
+    "alt": "Fresh concrete driveway by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/backyard-concrete-patio.webp",
+    "title": "Concrete patio beside the home",
+    "category": "Concrete",
+    "alt": "Concrete patio beside the home by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/garage-concrete-driveway.webp",
+    "title": "Concrete driveway and garage approach",
+    "category": "Concrete",
+    "alt": "Concrete driveway and garage approach by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/rear-door-concrete-patio.webp",
+    "title": "Concrete patio outside the back doors",
+    "category": "Concrete",
+    "alt": "Concrete patio outside the back doors by Rugged American Exteriors"
   }
 ];
 
