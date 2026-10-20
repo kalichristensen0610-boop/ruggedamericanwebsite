@@ -39,3 +39,10 @@ body.rae-dark{background:#171614;color:#f7f4ef}
 .rae-dark #rae-landing-page .rae-form-wrapper,.rae-dark #rae-landing-page .rae-card,.rae-dark #rae-landing-page .rae-review-card,.rae-dark #rae-landing-page .rae-contact{background:#24221f;color:#f7f4ef;box-shadow:0 8px 28px #0004}
 .rae-dark #rae-landing-page .rae-card p,.rae-dark #rae-landing-page .rae-form-wrapper p{color:#c6c0b7}
 .rae-dark [class~="bg-white/90"]{background:#24221fe8}
+
+/* Give the estimate its own raised, orange-accented surface. */
+.rae-dark .rae-estimate-spotlight{position:relative;isolation:isolate;background:linear-gradient(145deg,#31261e,#25211d 50%);border:2px solid #f45514;border-top-width:6px;box-shadow:0 0 0 6px #f455140b,0 0 42px #f4551426,0 24px 50px #0008;transform:translateY(-6px)}
+.rae-dark .rae-estimate-spotlight h3{color:#ff8b4e}
+.rae-dark .rae-estimate-spotlight input,.rae-dark .rae-estimate-spotlight select,.rae-dark .rae-estimate-spotlight textarea{background:#191715;border-color:#ffffff38}
+.rae-dark .rae-estimate-spotlight:focus-within{box-shadow:0 0 0 6px #f4551414,0 0 52px #f4551438,0 24px 50px #0008}
+@media(max-width:639px){.rae-dark .rae-estimate-spotlight{transform:none;box-shadow:0 0 24px #f4551426,0 14px 28px #0006}}

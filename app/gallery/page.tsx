@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import type {Metadata} from 'next';
 import {PageHero} from '@/components/sections';
+import {ProjectGallery} from '@/components/project-gallery';
 
 export const metadata: Metadata = {
   title: 'Our Work',
-  description: 'See roofing project footage and completed gutter installations by Rugged American Exteriors across Dallas Fort Worth.',
+  description: 'Browse roofing footage, gutter installations, concrete work, and site preparation by Rugged American Exteriors across Dallas Fort Worth.',
 };
 
 const newProjects = [
@@ -181,7 +181,7 @@ export default function Gallery() {
       <PageHero
         eyebrow="OUR WORK"
         title="Real work. Built for real homes."
-        desc="See our team at work, from roofing projects to seamless gutter installations across North Texas."
+        desc="See our team at work, from roofing projects to gutters and concrete across North Texas."
       />
       <section aria-labelledby="project-video-heading" className="border-b border-ink/10 bg-steel px-5 py-14 md:py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1fr_.8fr] lg:gap-20">
@@ -189,47 +189,7 @@ export default function Gallery() {
           <figure className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-ink/15 bg-white shadow-lg"><video controls playsInline preload="metadata" poster="/project-videos/roofing-project-poster.jpg" aria-label="Rugged American Exteriors roofing project in progress" className="aspect-[9/16] w-full bg-black object-contain"><source src="/project-videos/roofing-project.mp4" type="video/mp4"/>Your browser does not support video playback. <a href="/project-videos/roofing-project.mp4">Download the roofing project video</a>.</video><figcaption className="border-t-4 border-oxide px-5 py-4 font-bold">Roofing project in progress</figcaption></figure>
         </div>
       </section>
-      <section className="px-5 py-14 md:py-20" aria-labelledby="new-projects-heading"><div className="mx-auto max-w-7xl"><p className="text-xs font-black uppercase tracking-[.2em] text-oxide">More from our job sites</p><h2 id="new-projects-heading" className="mt-3 text-3xl font-extrabold sm:text-5xl">Real homes. Work we're proud of.</h2><p className="mt-4 max-w-2xl leading-7 text-ink/70">Gutter installations, concrete projects, and the preparation behind the finished work. Select any photo for a closer look.</p><div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{newProjects.map(project=><figure key={project.src} className="group overflow-hidden rounded-xl border border-ink/15 bg-white"><a href={project.src} target="_blank" rel="noopener noreferrer" aria-label={`Open photo: ${project.title}`} className="focus-ring relative block aspect-[3/4] overflow-hidden bg-steel"><Image src={project.src} alt={project.alt} fill sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw,100vw" className="object-cover transition-transform duration-700 group-hover:scale-105"/></a><figcaption className="border-t-4 border-oxide p-5"><p className="text-xs font-bold uppercase tracking-wider text-oxide">{project.category}</p><h3 className="mt-2 text-xl font-bold">{project.title}</h3></figcaption></figure>)}</div></div></section>
-      <section className="px-4 py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex items-end justify-between gap-6 border-b border-ink/15 pb-6">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[.2em] text-oxide">Completed projects</p>
-              <h2 className="mt-2 font-display text-3xl uppercase sm:text-4xl">Gutter installations</h2>
-            </div>
-            <p className="hidden max-w-sm text-right text-sm text-ink/60 sm:block">
-              Authentic project photos from homes we have worked on.
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <figure
-                className="group overflow-hidden border border-ink/15 bg-white shadow-[0_8px_24px_rgba(32,29,26,.08)]"
-                key={project.src}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-steel">
-                  <Image
-                    src={project.src}
-                    alt={project.alt}
-                    fill
-                    priority={index < 3}
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute left-4 top-4 bg-oxide px-3 py-2 text-xs font-black uppercase tracking-wider text-ink shadow-lg">
-                    Gutters
-                  </div>
-                </div>
-                <figcaption className="border-t-4 border-oxide p-5">
-                  <h3 className="font-display text-2xl uppercase">{project.title}</h3>
-                  <p className="mt-2 text-sm text-ink/65">{project.detail}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="project-photos" aria-labelledby="project-photos-heading" className="px-5 py-14 md:py-20"><div className="mx-auto max-w-7xl"><div className="mb-8 border-b border-white/15 pb-8"><p className="text-xs font-black uppercase tracking-[.2em] text-oxide">Explore the details</p><h2 id="project-photos-heading" className="mt-3 text-3xl font-extrabold sm:text-5xl">Find the work you want to see.</h2><p className="mt-4 max-w-2xl leading-7 text-ink/70">Browse by project type, then open any photo for a closer look. Finished work and progress photos are kept together by service.</p></div><ProjectGallery projects={[...newProjects,...projects.map(project=>({...project,category:'Gutters'}))]}/></div></section>
     </>
   );
 }
