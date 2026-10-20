@@ -34,7 +34,7 @@ const leaves=[
 ];
 
 const projectPhotos=[
-  ['/fall-projects/img_4035.webp','Completed dark gutter system on a two-story home','Two-story roofline'],
+  ['/fall-projects/img_4035.webp','Completed dark gutter system on a two story home','Two story roofline'],
   ['/fall-projects/img_0584.webp','Close detail of a dark gutter and downspout installation','Custom corner detail'],
   ['/fall-projects/img_0623.webp','Dark seamless gutter and downspout along a brick home','Long seamless run'],
   ['/fall-projects/img_0504.webp','White seamless gutter viewed along the roof edge','Clean white gutter line'],
@@ -94,7 +94,7 @@ export function FallGutterOfferPage({campaign,badge,headline,highlight,descripti
     </section>
 
     <section className="bg-[#f4eadc] px-4 py-20"><div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-      <div><p className="text-xs font-black uppercase tracking-[.22em] text-oxide">BEAT FALL DEBRIS</p><h2 className="mt-3 font-display text-4xl uppercase sm:text-6xl">Get your roofline ready before the leaves pile up.</h2><p className="mt-5 text-lg leading-8 text-ink/70">A well-planned seamless gutter system helps move North Texas rain away from your roofline, siding, landscaping, walkways, and foundation—without unnecessary seams along each run.</p><div className="mt-8"><Button asChild><a href="#fall-offer-form">Get My Free Estimate</a></Button></div></div>
+      <div><p className="text-xs font-black uppercase tracking-[.22em] text-oxide">BEAT FALL DEBRIS</p><h2 className="mt-3 font-display text-4xl uppercase sm:text-6xl">Get your roofline ready before the leaves pile up.</h2><p className="mt-5 text-lg leading-8 text-ink/70">A carefully planned seamless gutter system helps move North Texas rain away from your roofline, siding, landscaping, walkways, and foundation without unnecessary seams along each run.</p><div className="mt-8"><Button asChild><a href="#fall-offer-form">Get My Free Estimate</a></Button></div></div>
       <div className="relative min-h-[380px] overflow-hidden border-4 border-white shadow-[10px_10px_0_#6f3b22] sm:min-h-[500px]"><Image src="/estimate-a-assets/hero-black-gutters.jpg" alt="White seamless gutter and downspout installed above a garage" fill sizes="(min-width:1024px) 55vw,100vw" className="object-cover"/></div>
     </div></section>
 

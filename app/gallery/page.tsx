@@ -3,7 +3,7 @@ import type {Metadata} from 'next';
 import {PageHero} from '@/components/sections';
 
 export const metadata: Metadata = {
-  title: 'Project Gallery',
+  title: 'Our Work',
   description: 'Explore completed gutter projects by Rugged American Exteriors across Dallas Fort Worth.',
 };
 
