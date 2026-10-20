@@ -4,7 +4,7 @@ import {PageHero} from '@/components/sections';
 
 export const metadata: Metadata = {
   title: 'Our Work',
-  description: 'Explore completed gutter projects by Rugged American Exteriors across Dallas Fort Worth.',
+  description: 'See roofing project footage and completed gutter installations by Rugged American Exteriors across Dallas Fort Worth.',
 };
 
 const projects = [
@@ -52,8 +52,14 @@ export default function Gallery() {
       <PageHero
         eyebrow="OUR WORK"
         title="Real work. Built for real homes."
-        desc="A closer look at seamless gutter systems installed by Rugged American Exteriors."
+        desc="See our team at work, from roofing projects to seamless gutter installations across North Texas."
       />
+      <section aria-labelledby="project-video-heading" className="border-b border-ink/10 bg-steel px-5 py-14 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1fr_.8fr] lg:gap-20">
+          <div><p className="text-xs font-black uppercase tracking-[.2em] text-[#b83e12]">From the job site</p><h2 id="project-video-heading" className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">A closer look at<br/>the work behind the roof.</h2><p className="mt-5 max-w-lg text-lg leading-8 text-ink/70">Watch a roofing project in progress with the Rugged American Exteriors team.</p><p className="mt-5 text-sm text-ink/60">Press play to watch. Sound and full screen controls are available in the player.</p></div>
+          <figure className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-ink/15 bg-white shadow-lg"><video controls playsInline preload="metadata" poster="/project-videos/roofing-project-poster.jpg" aria-label="Rugged American Exteriors roofing project in progress" className="aspect-[9/16] w-full bg-black object-contain"><source src="/project-videos/roofing-project.mp4" type="video/mp4"/>Your browser does not support video playback. <a href="/project-videos/roofing-project.mp4">Download the roofing project video</a>.</video><figcaption className="border-t-4 border-oxide px-5 py-4 font-bold">Roofing project in progress</figcaption></figure>
+        </div>
+      </section>
       <section className="px-4 py-20">
         <div className="mx-auto max-w-7xl">
           <div className="flex items-end justify-between gap-6 border-b border-ink/15 pb-6">
