@@ -77,17 +77,17 @@ export default async function Service({params}: {params: Promise<{slug: string}>
           <div>
             <Checklist items={service.items} />
 
-            {isGutterService&&<aside className="mt-12 overflow-hidden border-2 border-oxide bg-ink text-white shadow-[0_12px_35px_rgba(32,29,26,.18)]"><div className="grid gap-6 p-7 sm:p-9 md:grid-cols-[1fr_auto] md:items-center"><div><p className="text-xs font-black uppercase tracking-[.22em] text-oxide">WE STAND BEHIND OUR WORK</p><h3 className="mt-3 font-display text-3xl uppercase sm:text-4xl">Lifetime Workmanship Warranty on Gutter Installations</h3><p className="mt-4 max-w-3xl text-white/75">Qualifying gutter installation workmanship completed by Rugged American Exteriors is backed by our lifetime workmanship warranty. This coverage applies to our installation workmanship and is separate from any manufacturer or material warranty.</p></div><Button asChild><Link href="/contact">Request Complete Warranty Terms</Link></Button></div></aside>}
+            {isGutterService&&<aside className="mt-12 overflow-hidden border-2 border-oxide bg-[#faf9f6] text-ink shadow-[0_12px_35px_rgba(32,29,26,.18)]"><div className="grid gap-6 p-7 sm:p-9 md:grid-cols-[1fr_auto] md:items-center"><div><p className="text-xs font-black uppercase tracking-[.22em] text-oxide">WE STAND BEHIND OUR WORK</p><h3 className="mt-3 font-display text-3xl uppercase sm:text-4xl">Lifetime Workmanship Warranty on Gutter Installations</h3><p className="mt-4 max-w-3xl text-ink/75">Qualifying gutter installation workmanship completed by Rugged American Exteriors is backed by our lifetime workmanship warranty. This coverage applies to our installation workmanship and is separate from any manufacturer or material warranty.</p></div><Button asChild><Link href="/contact">Request Complete Warranty Terms</Link></Button></div></aside>}
 
-            {paintingDetail&&<section className="mt-12 overflow-hidden border border-ink/15 bg-white shadow-[0_10px_30px_rgba(32,29,26,.08)]"><div className="grid gap-6 bg-ink p-7 text-white sm:p-9 md:grid-cols-[1fr_auto] md:items-center"><div><Eyebrow>PRODUCTS AND PROCESS</Eyebrow><h3 className="font-display text-3xl uppercase sm:text-4xl">{paintingDetail.heading}</h3><p className="mt-4 max-w-3xl text-white/75">{paintingDetail.intro}</p></div><div className="rounded-sm bg-white p-4"><Image src="/sherwin-williams-logo.png" alt="Sherwin-Williams" width={262} height={88} className="h-auto w-52"/></div></div><div className="grid gap-px bg-ink/15 sm:grid-cols-2">{paintingDetail.cards.map(([title,description])=><article className="bg-white p-6 sm:p-8" key={title}><h4 className="font-display text-2xl uppercase">{title}</h4><p className="mt-3 text-ink/70">{description}</p></article>)}</div><p className="border-t border-ink/15 bg-steel px-6 py-4 text-xs text-ink/60 sm:px-8">Sherwin-Williams is a trademark of The Sherwin-Williams Company. Product use does not imply affiliation, certification, or endorsement.</p></section>}
+            {paintingDetail&&<section className="mt-12 overflow-hidden border border-ink/15 bg-white shadow-[0_10px_30px_rgba(32,29,26,.08)]"><div className="grid gap-6 bg-[#faf9f6] p-7 text-ink sm:p-9 md:grid-cols-[1fr_auto] md:items-center"><div><Eyebrow>PRODUCTS AND PROCESS</Eyebrow><h3 className="font-display text-3xl uppercase sm:text-4xl">{paintingDetail.heading}</h3><p className="mt-4 max-w-3xl text-ink/75">{paintingDetail.intro}</p></div><div className="rounded-sm bg-white p-4"><Image src="/sherwin-williams-logo.png" alt="Sherwin-Williams" width={262} height={88} className="h-auto w-52"/></div></div><div className="grid gap-px bg-ink/15 sm:grid-cols-2">{paintingDetail.cards.map(([title,description])=><article className="bg-white p-6 sm:p-8" key={title}><h4 className="font-display text-2xl uppercase">{title}</h4><p className="mt-3 text-ink/70">{description}</p></article>)}</div><p className="border-t border-ink/15 bg-steel px-6 py-4 text-xs text-ink/60 sm:px-8">Sherwin-Williams is a trademark of The Sherwin-Williams Company. Product use does not imply affiliation, certification, or endorsement.</p></section>}
 
             {isRoofing && (
               <div className="mt-12 space-y-8">
                 <section className="overflow-hidden border border-ink/15 bg-white shadow-[0_10px_30px_rgba(32,29,26,.08)]">
-                  <div className="bg-ink p-7 text-white sm:p-9">
+                  <div className="bg-[#faf9f6] p-7 text-ink sm:p-9">
                     <Eyebrow>FREE ROOF INSPECTIONS</Eyebrow>
                     <h3 className="font-display text-3xl uppercase sm:text-4xl">Know what is happening before deciding what comes next.</h3>
-                    <p className="mt-4 max-w-3xl text-white/75">
+                    <p className="mt-4 max-w-3xl text-ink/75">
                       Our free, no obligation inspection looks for visible signs of hail, wind, storm, age related, and other roof damage. We document what we find, explain it in plain language, and give you practical options without pressuring you into a decision.
                     </p>
                     <div className="mt-6">
@@ -117,10 +117,10 @@ export default async function Service({params}: {params: Promise<{slug: string}>
                 </section>
 
                 <section className="grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
-                  <div className="border-l-4 border-oxide bg-ink p-7 text-white sm:p-8">
+                  <div className="border-l-4 border-oxide bg-[#faf9f6] p-7 text-ink sm:p-8">
                     <p className="text-xs font-black uppercase tracking-[.2em] text-oxide">WORKING WITH YOUR ADJUSTER</p>
                     <h3 className="mt-3 font-display text-3xl uppercase">Clear coordination from the roof to the paperwork</h3>
-                    <p className="mt-4 text-white/70">
+                    <p className="mt-4 text-ink/70">
                       When requested, we coordinate with your insurance carrier and adjuster, share relevant roof findings, discuss the repair scope, and help answer construction questions. Our role is to make the roofing side easier to understand and help you use the benefits your policy provides.
                     </p>
                   </div>
@@ -133,10 +133,10 @@ export default async function Service({params}: {params: Promise<{slug: string}>
                         ['03', 'Coordinate the scope', 'We help organize roofing details and communication.'],
                         ['04', 'Complete the work', 'Our team schedules installation and walks through the finished project.'],
                       ].map(([number, title, description]) => (
-                        <li key={number} className="group border border-oxide/60 bg-ink p-4 text-white transition hover:border-oxide hover:bg-[#2b2723]">
-                          <span className="inline-flex h-9 w-9 items-center justify-center border border-oxide bg-[#2b2723] text-xs font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">{number}</span>
+                        <li key={number} className="group border border-oxide/60 bg-[#faf9f6] p-4 text-ink transition hover:border-oxide hover:bg-[#fff0e8]">
+                          <span className="inline-flex h-9 w-9 items-center justify-center border border-oxide bg-white text-xs font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">{number}</span>
                           <h4 className="mt-2 font-bold">{title}</h4>
-                          <p className="mt-2 text-sm text-white/70">{description}</p>
+                          <p className="mt-2 text-sm text-ink/70">{description}</p>
                         </li>
                       ))}
                     </ol>
@@ -152,12 +152,12 @@ export default async function Service({params}: {params: Promise<{slug: string}>
             {isGutterInstallation && (
               <>
                 <div className="mt-12 overflow-hidden border border-ink/15 bg-steel">
-                  <div className="bg-ink px-6 py-8 text-white sm:px-8">
+                  <div className="bg-[#faf9f6] px-6 py-8 text-ink sm:px-8">
                     <Eyebrow>FORMED AT YOUR HOME</Eyebrow>
                     <h3 className="mt-2 font-display text-3xl uppercase sm:text-4xl">
                       Custom seamless gutters made for your roofline
                     </h3>
-                    <p className="mt-4 max-w-3xl text-white/75">
+                    <p className="mt-4 max-w-3xl text-ink/75">
                       We measure your home first, then feed gutter coil through the professional roll forming machine in our trailer. Each straight run comes out at the length your home needs, ready to be fitted onsite.
                     </p>
                   </div>
@@ -179,8 +179,8 @@ export default async function Service({params}: {params: Promise<{slug: string}>
                   </div>
                   <ol className="grid gap-4 p-6 sm:grid-cols-4 sm:p-8">
                     {['Measure the roofline', 'Form each gutter run', 'Build custom corners', 'Fit outlets and downspouts'].map((step, index) => (
-                      <li key={step} className="group border border-oxide/60 bg-ink p-4 text-white transition hover:border-oxide hover:bg-[#2b2723]">
-                        <span className="inline-flex h-9 w-9 items-center justify-center border border-oxide bg-[#2b2723] text-xs font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">0{index + 1}</span>
+                      <li key={step} className="group border border-oxide/60 bg-[#faf9f6] p-4 text-ink transition hover:border-oxide hover:bg-[#fff0e8]">
+                        <span className="inline-flex h-9 w-9 items-center justify-center border border-oxide bg-white text-xs font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">0{index + 1}</span>
                         <p className="mt-3 font-bold">{step}</p>
                       </li>
                     ))}
@@ -209,10 +209,10 @@ export default async function Service({params}: {params: Promise<{slug: string}>
               <h3 className="font-display text-3xl uppercase">Our four step process</h3>
               <ol className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 {processSteps.map(([step,description], index) => (
-                  <li className="group border border-oxide/60 bg-ink p-5 text-white shadow-[0_8px_22px_rgba(32,29,26,.14)] transition duration-200 hover:-translate-y-1 hover:border-oxide hover:bg-[#2b2723]" key={step}>
-                    <span className="inline-flex h-10 w-10 items-center justify-center border-2 border-oxide bg-[#2b2723] text-sm font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">0{index + 1}</span>
+                  <li className="group border border-oxide/60 bg-[#faf9f6] p-5 text-ink shadow-[0_8px_22px_rgba(32,29,26,.14)] transition duration-200 hover:-translate-y-1 hover:border-oxide hover:bg-[#fff0e8]" key={step}>
+                    <span className="inline-flex h-10 w-10 items-center justify-center border-2 border-oxide bg-white text-sm font-black text-oxide transition group-hover:bg-oxide group-hover:text-ink">0{index + 1}</span>
                     <h4 className="mt-3 font-display text-xl uppercase">{step}</h4>
-                    <p className="mt-3 text-sm leading-6 text-white/70">{description}</p>
+                    <p className="mt-3 text-sm leading-6 text-ink/70">{description}</p>
                   </li>
                 ))}
               </ol>
