@@ -67,6 +67,72 @@ const newProjects = [
     "title": "Gutter and downspout detail",
     "category": "Gutters",
     "alt": "Gutter and downspout detail by Rugged American Exteriors"
+  },
+  {
+    "src": "/fall-projects/img_0837.webp",
+    "title": "Home exterior and gutter installation",
+    "category": "Gutters",
+    "alt": "Home exterior and gutter installation by Rugged American Exteriors"
+  },
+  {
+    "src": "/fall-projects/img_0625.webp",
+    "title": "Covered patio gutter detail",
+    "category": "Gutters",
+    "alt": "Covered patio gutter detail by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0602-project.webp",
+    "title": "Garage roofline and seamless gutters",
+    "category": "Gutters",
+    "alt": "Garage roofline and seamless gutters by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0603-project.webp",
+    "title": "Front elevation and gutter installation",
+    "category": "Gutters",
+    "alt": "Front elevation and gutter installation by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0623-project.webp",
+    "title": "Black seamless gutter run along brick",
+    "category": "Gutters",
+    "alt": "Black seamless gutter run along brick by Rugged American Exteriors"
+  },
+  {
+    "src": "/fall-projects/img_0584.webp",
+    "title": "Downspout and corner connection",
+    "category": "Gutters",
+    "alt": "Downspout and corner connection by Rugged American Exteriors"
+  },
+  {
+    "src": "/fall-projects/img_0504.webp",
+    "title": "A closer look along the gutter run",
+    "category": "Gutters",
+    "alt": "A closer look along the gutter run by Rugged American Exteriors"
+  },
+  {
+    "src": "/fall-projects/img_0502.webp",
+    "title": "Roof corner and gutter detail",
+    "category": "Gutters",
+    "alt": "Roof corner and gutter detail by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0424-project.webp",
+    "title": "Completed gutters around a brick home",
+    "category": "Gutters",
+    "alt": "Completed gutters around a brick home by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0433-project.webp",
+    "title": "Front entry and exterior gutter detail",
+    "category": "Gutters",
+    "alt": "Front entry and exterior gutter detail by Rugged American Exteriors"
+  },
+  {
+    "src": "/gallery/customer-projects/img_0423-project.webp",
+    "title": "Side roofline and downspout installation",
+    "category": "Gutters",
+    "alt": "Side roofline and downspout installation by Rugged American Exteriors"
   }
 ];
 
