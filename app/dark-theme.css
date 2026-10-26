@@ -68,3 +68,19 @@ html body .rae-wizard .rae-wizard-selected{background:#fff0e7!important;border-c
 .rae-home #estimate{scroll-margin-top:110px}
 .rae-dark .rae-estimate-spotlight h3{font-size:clamp(2.15rem,4vw,3.3rem);line-height:1.02;letter-spacing:-.035em;font-weight:900;margin-bottom:1.5rem}
 @media(max-width:1023px){.rae-home #estimate>.grid>.rae-estimate-spotlight{grid-row:1}.rae-home #estimate>.grid{gap:2rem}}
+
+/* A photo-first opening, sized for mobile as well as desktop. */
+.rae-cinematic-hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:680px;min-height:82svh;max-height:1000px;overflow:hidden;background:#171614}
+.rae-cinematic-hero .rae-cinematic-photo{object-fit:cover;object-position:60% center;z-index:-2}
+.rae-cinematic-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,12,12,.78),rgba(10,12,12,.26) 65%,rgba(10,12,12,.08)),linear-gradient(0deg,rgba(10,12,12,.85),transparent 65%)}
+.rae-cinematic-content{width:100%;max-width:1280px;margin:0 auto;padding:100px 32px 110px}
+.rae-cinematic-eyebrow{margin:0 0 24px;color:#fff;font-size:12px;font-weight:800;letter-spacing:.2em;text-shadow:0 2px 15px #0008}
+.rae-cinematic-hero h1{max-width:850px;margin:0;font-size:clamp(3.2rem,7.5vw,7rem);line-height:.98;font-weight:900;letter-spacing:-.055em;color:#fff;text-shadow:0 3px 30px #0005}
+.rae-cinematic-hero h1 span{color:#ff8b4e}
+.rae-cinematic-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:32px}
+.rae-cinematic-hero .rae-hero-estimate{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:58px;padding:16px 26px;border-radius:6px;background:#f45514;color:#171614;font-weight:900;box-shadow:0 8px 30px #0004}
+.rae-cinematic-hero .rae-hero-estimate:hover{background:#ff8b4e}
+.rae-cinematic-hero .rae-hero-call{display:inline-flex;align-items:center;gap:9px;color:#fff;font-size:15px;font-weight:800}
+.rae-cinematic-hero .rae-hero-discover{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:18px;white-space:nowrap;color:#fff;font-size:10px;font-weight:800;letter-spacing:.18em}
+.rae-hero-discover span{font-size:24px;color:#ff8b4e}
+@media(max-width:639px){.rae-cinematic-hero{min-height:660px;min-height:calc(100svh - 90px);max-height:850px}.rae-cinematic-hero .rae-cinematic-photo{object-position:57% center}.rae-cinematic-shade{background:linear-gradient(0deg,rgba(10,12,12,.93),rgba(10,12,12,.25) 78%),linear-gradient(90deg,#10101044,transparent)}.rae-cinematic-content{padding:140px 24px 100px}.rae-cinematic-eyebrow{font-size:10px;letter-spacing:.14em;margin-bottom:20px}.rae-cinematic-hero h1{font-size:clamp(3rem,12.8vw,5.1rem)}.rae-cinematic-actions{margin-top:26px;gap:18px}.rae-cinematic-hero .rae-hero-estimate{width:100%;min-height:56px}.rae-cinematic-hero .rae-hero-call{font-size:14px}.rae-cinematic-hero .rae-hero-discover{bottom:21px}}
