@@ -21,7 +21,7 @@ export default function Home(){return <div className="rae-home">
 <Image src="/dfw-house-hero.webp" alt="Illustrative North Texas home with seamless gutters" fill sizes="100vw" priority className="rae-cinematic-photo"/>
 <div className="rae-cinematic-shade" aria-hidden="true"/>
 <div className="rae-cinematic-content">
-<p className="rae-cinematic-eyebrow">FAMILY &amp; VETERAN OWNED · DFW</p>
+<p className="rae-cinematic-eyebrow">FAMILY &amp; VETERAN OWNED<span className="rae-hero-location">DALLAS-FORT WORTH</span></p>
 <h1>Built for the<br/>exterior of<br/><span>your home.</span></h1>
 <div className="rae-cinematic-actions"><Link href="#estimate" className="focus-ring rae-hero-estimate">Get a free estimate <ArrowRight size={20}/></Link><a href={`tel:${business.phoneHref}`} className="focus-ring rae-hero-call"><Phone size={17}/>{business.phone}</a></div>
 </div>
