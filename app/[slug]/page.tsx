@@ -1,3 +1,4 @@
+import {ServiceEstimate} from '@/components/service-estimate';
 import {pageMetadata} from '@/lib/social-metadata';
 import {ServiceProjectPhotos} from '@/components/service-project-photos';
 import {notFound} from 'next/navigation';
@@ -66,8 +67,8 @@ export default async function Service({params}: {params: Promise<{slug: string}>
 
   return (
     <>
-      <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} image={serviceImages[slug]} />
-      <ServiceProjectPhotos service={slug}/><section className="px-4 py-20">
+      <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} image={serviceImages[slug]} estimateHref={`/${slug}/estimate`} />
+      <ServiceEstimate slug={slug}/><ServiceProjectPhotos service={slug}/><section className="px-4 py-20">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
             <Eyebrow>WHAT’S INCLUDED</Eyebrow>
@@ -90,7 +91,7 @@ export default async function Service({params}: {params: Promise<{slug: string}>
                       Our free, no obligation inspection looks for visible signs of hail, wind, storm, age related, and other roof damage. We document what we find, explain it in plain language, and give you practical options without pressuring you into a decision.
                     </p>
                     <div className="mt-6">
-                      <Button asChild><Link href="/contact">Schedule Your Free Roof Inspection</Link></Button>
+                      <Button asChild><Link href={`/${slug}/estimate`}>Schedule Your Free Roof Inspection</Link></Button>
                     </div>
                   </div>
 
@@ -228,9 +229,9 @@ export default async function Service({params}: {params: Promise<{slug: string}>
         </div>
       </section>
       {isRoofing ? (
-        <CTA eyebrow="A simpler roofing process" title="Start with a free, no obligation roof inspection." label="Schedule Your Free Roof Inspection" />
+        <CTA href={`/${slug}/estimate`} eyebrow="A simpler roofing process" title="Start with a free, no obligation roof inspection." label="Schedule Your Free Roof Inspection" />
       ) : (
-        <CTA />
+        <CTA href={`/${slug}/estimate`}/>
       )}
     </>
   );

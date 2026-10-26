@@ -1,3 +1,4 @@
+import {ServiceEstimate} from '@/components/service-estimate';
 import type {Metadata} from 'next';
 import {pageMetadata} from '@/lib/social-metadata';
 import {ServiceProjectPhotos} from '@/components/service-project-photos';
@@ -82,7 +83,7 @@ export default function ConcretePage(){
         <h1 className="max-w-4xl font-display text-[2.65rem] uppercase leading-[.95] md:text-7xl">Concrete Built for the Way You Use Your Property</h1>
         <p className="mt-6 max-w-2xl text-lg text-white/80">From form setting, pouring, and demolition to driveways, slabs, foundations, patios, and commercial projects, Rugged American Exteriors delivers concrete work built around how your property needs to perform.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild><Link href="/contact?service=Concrete+-+tell+us+more">Get a Free Concrete Estimate <ArrowRight className="concrete-cta-arrow" size={16}/></Link></Button>
+          <Button asChild><Link href="/concrete/estimate">Get a Free Concrete Estimate <ArrowRight className="concrete-cta-arrow" size={16}/></Link></Button>
           <Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> Call for a Quote</a></Button>
         </div>
       </div>
@@ -94,7 +95,7 @@ export default function ConcretePage(){
       </div>
     </section>
 
-    <ServiceProjectPhotos service="concrete"/><section className="px-4 py-20">
+    <ServiceEstimate slug="concrete"/><ServiceProjectPhotos service="concrete"/><section className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
         <Eyebrow>BUILT AROUND YOUR PROPERTY</Eyebrow>
         <div className="grid gap-6 lg:grid-cols-[1fr_.65fr] lg:items-end"><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Services</h2><p className="text-ink/70">Concrete preparation, installation, removal, and finishing for residential and commercial properties.</p></div>
@@ -121,13 +122,13 @@ export default function ConcretePage(){
     </section>
 
     <section className="bg-steel px-4 py-20">
-      <div className="mx-auto max-w-5xl text-center"><Eyebrow>LOCAL CONCRETE WORK</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Projects Across the Fort Worth Area</h2><p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-ink/70">Looking for a concrete contractor in Fort Worth, Crowley, Burleson, Joshua, Mansfield, or Cleburne? Rugged American Exteriors provides residential and commercial concrete, demolition, driveways, walkways, slabs, foundations, patios, pool decks, and decorative concrete. We serve Crowley, Burleson, Joshua, Mansfield, Fort Worth, Cleburne, Arlington, and surrounding North Texas communities.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><Button asChild><Link href="/service-areas">Explore Our Service Areas</Link></Button><Button variant="outline" asChild><Link href="/contact?service=Concrete+-+tell+us+more">Request a Concrete Estimate</Link></Button></div></div>
+      <div className="mx-auto max-w-5xl text-center"><Eyebrow>LOCAL CONCRETE WORK</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Projects Across the Fort Worth Area</h2><p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-ink/70">Looking for a concrete contractor in Fort Worth, Crowley, Burleson, Joshua, Mansfield, or Cleburne? Rugged American Exteriors provides residential and commercial concrete, demolition, driveways, walkways, slabs, foundations, patios, pool decks, and decorative concrete. We serve Crowley, Burleson, Joshua, Mansfield, Fort Worth, Cleburne, Arlington, and surrounding North Texas communities.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><Button asChild><Link href="/service-areas">Explore Our Service Areas</Link></Button><Button variant="outline" asChild><Link href="/concrete/estimate">Request a Concrete Estimate</Link></Button></div></div>
     </section>
 
     <section id="faq" className="scroll-mt-28 px-4 py-20">
       <div className="mx-auto max-w-4xl"><Eyebrow>STRAIGHT ANSWERS</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Questions, Answered.</h2><div className="mt-10 divide-y divide-ink/20 border-y border-ink/20">{faqs.map(([question,answer])=><details className="group" key={question}><summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-5 py-6 font-black"><span>{question}</span><span className="text-2xl text-oxide transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary><p className="max-w-3xl pb-6 pr-10 leading-7 text-ink/70">{answer}</p></details>)}</div></div>
     </section>
 
-    <section className="bg-oxide px-4 py-16 text-ink"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 lg:flex-row lg:items-center"><div><p className="text-xs font-black uppercase tracking-[.2em] text-ink/70">READY WHEN YOU ARE</p><h2 className="mt-2 font-display text-4xl uppercase md:text-5xl">Have a Concrete Project in Mind?</h2><p className="mt-4 max-w-3xl text-ink/75">Whether you need pouring, demolition, a driveway, slab, foundation, patio, pool deck, or commercial concrete work, we’d be happy to take a look at your project.</p></div><div className="flex flex-wrap gap-3"><Button variant="light" asChild><Link href="/contact?service=Concrete+-+tell+us+more">Get Your Free Estimate</Link></Button><Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> {business.phone}</a></Button></div></div></section>
+    <section className="bg-oxide px-4 py-16 text-ink"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 lg:flex-row lg:items-center"><div><p className="text-xs font-black uppercase tracking-[.2em] text-ink/70">READY WHEN YOU ARE</p><h2 className="mt-2 font-display text-4xl uppercase md:text-5xl">Have a Concrete Project in Mind?</h2><p className="mt-4 max-w-3xl text-ink/75">Whether you need pouring, demolition, a driveway, slab, foundation, patio, pool deck, or commercial concrete work, we’d be happy to take a look at your project.</p></div><div className="flex flex-wrap gap-3"><Button variant="light" asChild><Link href="/concrete/estimate">Get Your Free Estimate</Link></Button><Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> {business.phone}</a></Button></div></div></section>
   </>;
 }

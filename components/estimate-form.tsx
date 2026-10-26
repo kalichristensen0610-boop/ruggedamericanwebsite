@@ -18,7 +18,7 @@ type ServiceCategory=keyof typeof serviceGroups;
 const categories=Object.keys(serviceGroups) as ServiceCategory[];
 const allServices:string[]=categories.flatMap(category=>[...serviceGroups[category]]);
 
-export function EstimateForm({compact=false}:{compact?:boolean}){
+export function EstimateForm({compact=false,fixedService}:{compact?:boolean;fixedService?:string}){
   const [state,setState]=useState<'idle'|'sending'|'success'|'error'>('idle');
   const [message,setMessage]=useState('');
   const [startedAt]=useState(()=>Date.now());
@@ -30,7 +30,7 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
     const url=new URL(window.location.href);
     const result=url.searchParams.get('estimate_status');
     const requestedService=url.searchParams.get('service');
-    if(requestedService&&allServices.includes(requestedService)){
+    if(!fixedService&&requestedService&&allServices.includes(requestedService)){
       const requestedCategory=categories.find(group=>serviceGroups[group].some(option=>option===requestedService));
       if(requestedCategory) setCategory(requestedCategory);
       setService(compact?(requestedCategory||''):requestedService);
@@ -46,21 +46,21 @@ export function EstimateForm({compact=false}:{compact?:boolean}){
       setMessage('We could not send your request. Please check the form and try again, or call (817) 262-7170.');
     }
     if(result) window.history.replaceState({},'',`${cleanLocation}${url.hash}`);
-  },[compact]);
+  },[compact,fixedService]);
 
   function submit(){
     setState('sending');
     setMessage('Sending your request securely…');
   }
 
-  return <form id="estimate-form" name="estimate_request" method="post" action="/api/estimate" onSubmit={submit} className="mt-6 grid gap-5" encType="multipart/form-data">
+  return <form id="estimate-form" name="estimate_request" method="post" action="https://www.ruggedamericanexteriors.com/api/estimate" onSubmit={submit} className="mt-6 grid gap-5" encType="multipart/form-data">
     <div className={compact?'grid gap-4 sm:grid-cols-2':'grid gap-4 md:grid-cols-2'}>
       <Field label="Name" name="name" autoComplete="name" required/>
       <Field label="Phone" name="phone" type="tel" autoComplete="tel" required/>
       <Field label="Email" name="email" type="email" autoComplete="email" required/>
       <Field label="Property address or ZIP" name="address" autoComplete="street-address" required/>
     </div>
-    {compact?<label className="grid gap-2 text-sm font-bold">What can we help with?<select name="service" required value={service} onChange={event=>setService(event.target.value)} className="focus-ring min-h-12 w-full rounded-md border border-ink/25 bg-white px-3"><option value="" disabled>Choose a service</option>{categories.map(option=><option key={option} value={option}>{option}</option>)}</select></label>:<fieldset className="grid gap-4 border border-ink/20 bg-steel/60 p-4 md:grid-cols-2">
+    {fixedService?<><p className="text-sm font-bold">Service: {fixedService}</p><input type="hidden" name="service" value={fixedService}/></>:compact?<label className="grid gap-2 text-sm font-bold">What can we help with?<select name="service" required value={service} onChange={event=>setService(event.target.value)} className="focus-ring min-h-12 w-full rounded-md border border-ink/25 bg-white px-3"><option value="" disabled>Choose a service</option>{categories.map(option=><option key={option} value={option}>{option}</option>)}</select></label>:<fieldset className="grid gap-4 border border-ink/20 bg-steel/60 p-4 md:grid-cols-2">
       <legend className="px-2 text-sm font-black uppercase tracking-wide">Service needed</legend>
       <label className="grid gap-1 text-sm font-bold">Project category
         <select name="service_category" required value={category} onChange={event=>{setCategory(event.target.value as ServiceCategory);setService('');}} className="focus-ring min-h-12 border border-ink/30 bg-white px-3">

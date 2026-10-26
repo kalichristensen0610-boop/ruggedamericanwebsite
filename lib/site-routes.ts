@@ -18,5 +18,6 @@ export const legalPages=[
 ];
 
 export const servicePages=allServices.map(service=>({name:service.name,href:`/${service.slug}`}));
+export const serviceEstimatePages=allServices.map(service=>({name:`${service.name} Estimate`,href:`/${service.slug}/estimate`}));
 export const serviceAreaPages=cities.map(city=>({name:cityName(city),href:`/service-areas/${city}`}));
-export const allSitePages=[...primaryPages,...servicePages,...serviceAreaPages,...legalPages];
+export const allSitePages=[...primaryPages,...servicePages,...serviceEstimatePages,...serviceAreaPages,...legalPages];
