@@ -6,11 +6,11 @@
 .rae-home h2{font-family:Arial,sans-serif;font-size:clamp(2rem,3.4vw,3.25rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;text-transform:none;-webkit-text-stroke:0}
 .rae-home .brand-shadow{border-radius:14px;box-shadow:0 4px 18px #201d1a06}
 .rae-home .brand-shadow h3{font-family:Arial,sans-serif;text-transform:none;font-weight:750;font-size:1.5rem;letter-spacing:-.025em}
-.rae-home .brand-shadow img{animation:none}
+
 .rae-home .brand-shadow .mb-8{display:none}
 .rae-home .brand-shadow p{line-height:1.75}
-.rae-home-hero img{animation:none!important;transform:none!important}
-.rae-home-hero{animation:none!important}
+
+
 .rae-home .text-oxide, .rae-page-hero .text-oxide{color:#b83e12}
 .rae-home a.bg-oxide{color:#201d1a}
 .rae-header nav button:hover,.rae-header nav>a:hover{color:#b83e12}
