@@ -63,3 +63,8 @@ html body form input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #fff inset
 html body form :is(input[type="checkbox"],input[type="radio"]){accent-color:#f45514}
 html body .rae-wizard .rae-wizard-choice{background:#fff!important;color:#201d1a!important;border:2px solid #f45514!important}
 html body .rae-wizard .rae-wizard-selected{background:#fff0e7!important;border-color:#f45514!important;color:#201d1a!important}
+
+/* Put the estimate front and center after the hero. */
+.rae-home #estimate{scroll-margin-top:110px}
+.rae-dark .rae-estimate-spotlight h3{font-size:clamp(2.15rem,4vw,3.3rem);line-height:1.02;letter-spacing:-.035em;font-weight:900;margin-bottom:1.5rem}
+@media(max-width:1023px){.rae-home #estimate>.grid>.rae-estimate-spotlight{grid-row:1}.rae-home #estimate>.grid{gap:2rem}}
