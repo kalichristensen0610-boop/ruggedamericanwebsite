@@ -68,7 +68,7 @@ export default async function Service({params}: {params: Promise<{slug: string}>
   return (
     <>
       <PageHero eyebrow={eyebrow} title={service.title} desc={service.desc} image={serviceImages[slug]} estimateHref={`/${slug}/estimate`} />
-      <ServiceEstimate slug={slug}/><ServiceProjectPhotos service={slug}/><section className="px-4 py-20">
+      {slug==='metal-shops'&&<section className="bg-white px-5 py-14"><div className="mx-auto max-w-7xl"><Eyebrow>CUSTOM CARPORTS &amp; FABRICATION</Eyebrow><h2 className="text-3xl font-bold md:text-5xl">Built around your space.</h2><p className="mt-5 max-w-3xl text-lg leading-8 text-ink/70">Custom steel carports, metal shops, and fabrication planned around your vehicles, equipment, and property. We can coordinate concrete work and the structure within your agreed project scope, including a carport alongside a shop.</p><p className="mt-4 max-w-3xl leading-7 text-ink/70">The photos below show slab preparation and pouring for a shop project. Tell us about your layout, access, and covered parking needs for a free estimate.</p></div></section>}<ServiceEstimate slug={slug}/><ServiceProjectPhotos service={slug}/><section className="px-4 py-20">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
             <Eyebrow>WHAT’S INCLUDED</Eyebrow>
