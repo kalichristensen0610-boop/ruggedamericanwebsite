@@ -1,8 +1,5 @@
 import type {Metadata} from 'next';
-import {readFileSync} from 'node:fs';
-import {join} from 'node:path';
-import {LandingPageClient} from './landing-page-client';
-import './landing-page.css';
+import {FallGutterOfferPage} from '@/components/fall-gutter-offer-page';
 
 export const metadata:Metadata={
   title:'North Texas Seamless Gutters',
@@ -10,13 +7,13 @@ export const metadata:Metadata={
   robots:{index:false,follow:false},
 };
 
-function landingMarkup(){
-  const source=readFileSync(join(process.cwd(),'app','estimate-a','landing.html'),'utf8');
-  const body=source.match(/<body[^>]*>([\s\S]*?)<script\s+src="script\.js"><\/script>[\s\S]*?<\/body>/i)?.[1];
-  if(!body) throw new Error('The Estimate A landing-page markup could not be loaded.');
-  return body.replaceAll('src="images/','src="/estimate-a-assets/');
-}
-
-export default function EstimateA(){
-  return <LandingPageClient html={landingMarkup()}/>;
-}
+export default function EstimateA(){return <FallGutterOfferPage
+ campaign="estimate-a"
+ badge="Free Estimates"
+ headline="North Texas Gutters"
+ highlight="Done Right."
+ description="Seamless gutters measured, formed onsite, and installed around your home. Local, family owned, and veteran owned in Dallas-Fort Worth."
+ cta="Get My Free Estimate"
+ detailsLabel="Estimate details"
+ terms="Your gutter estimate is free and comes with no obligation. Tell us what you need, and our team will reach out to discuss the project, confirm service availability, and arrange the next step."
+/>;}
