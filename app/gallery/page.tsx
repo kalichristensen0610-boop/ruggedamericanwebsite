@@ -6,24 +6,15 @@ import {ProjectGallery} from '@/components/project-gallery';
 export const metadata:Metadata=pageMetadata('Our Work | DFW Exterior Services','Explore real project photos and roofing footage from Rugged American Exteriors across Dallas Fort Worth.','/gallery');
 
 const newProjects = [
+{"src":"/concrete-projects/backyard-patio-finish.webp","alt":"Fresh concrete patio outside a home","title":"Backyard concrete patio","category":"Concrete"},
+{"src":"/concrete-projects/concrete-finish-detail.webp","alt":"Close view of a freshly finished concrete surface beside a home","title":"Concrete finish detail","category":"Concrete"},
+{"src":"/concrete-projects/side-yard-concrete.webp","alt":"Finished concrete walkway beside a brick home","title":"Side yard concrete walkway","category":"Concrete"},
 {"src": "/concrete-projects/shop-slab-finishing.webp", "title": "Concrete slab finishing", "alt": "Crew finishing a new concrete slab beside a metal shop", "category": "Concrete"},{"src": "/concrete-projects/reinforced-shop-slab.webp", "title": "Reinforced slab preparation", "alt": "Forms, vapor barrier, and reinforcement ready for a concrete pour", "category": "Concrete"},{"src": "/concrete-projects/concrete-pump-pour.webp", "title": "Concrete pump pour", "alt": "Concrete crew placing a slab with a pump truck", "category": "Concrete"},
   {
     "src": "/gallery/customer-projects/brick-home-exterior.webp",
     "title": "Brick home exterior",
     "category": "Gutters",
     "alt": "Brick home exterior by Rugged American Exteriors"
-  },
-  {
-    "src": "/gallery/customer-projects/fresh-concrete-patio.webp",
-    "title": "Freshly poured concrete patio",
-    "category": "Concrete",
-    "alt": "Freshly poured concrete patio by Rugged American Exteriors"
-  },
-  {
-    "src": "/gallery/customer-projects/concrete-side-walkway.webp",
-    "title": "Concrete walkway beside a brick home",
-    "category": "Concrete",
-    "alt": "Concrete walkway beside a brick home by Rugged American Exteriors"
   },
   {
     "src": "/gallery/customer-projects/brick-home-gutter-roofline.webp",
