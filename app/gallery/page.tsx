@@ -6,6 +6,7 @@ import {ProjectGallery} from '@/components/project-gallery';
 export const metadata:Metadata=pageMetadata('Our Work | DFW Exterior Services','Explore real project photos and roofing footage from Rugged American Exteriors across Dallas Fort Worth.','/gallery');
 
 const newProjects = [
+{"src": "/concrete-projects/shop-slab-finishing.webp", "title": "Concrete slab finishing", "alt": "Crew finishing a new concrete slab beside a metal shop", "category": "Concrete"},{"src": "/concrete-projects/reinforced-shop-slab.webp", "title": "Reinforced slab preparation", "alt": "Forms, vapor barrier, and reinforcement ready for a concrete pour", "category": "Concrete"},{"src": "/concrete-projects/concrete-pump-pour.webp", "title": "Concrete pump pour", "alt": "Concrete crew placing a slab with a pump truck", "category": "Concrete"},
   {
     "src": "/gallery/customer-projects/brick-home-exterior.webp",
     "title": "Brick home exterior",
