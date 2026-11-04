@@ -53,7 +53,7 @@ export function EstimateForm({compact=false,fixedService}:{compact?:boolean;fixe
     setMessage('Sending your request securely…');
   }
 
-  return <form id="estimate-form" name="estimate_request" method="post" action="https://www.ruggedamericanexteriors.com/api/estimate" onSubmit={submit} className="mt-6 grid gap-5" encType="multipart/form-data">
+  return <form id="estimate-form" name="estimate_request" method="post" action="/api/estimate" onSubmit={submit} className="rae-main-form mt-6 grid gap-5" encType="multipart/form-data">
     <div className={compact?'grid gap-4 sm:grid-cols-2':'grid gap-4 md:grid-cols-2'}>
       <Field label="Name" name="name" autoComplete="name" required/>
       <Field label="Phone" name="phone" type="tel" autoComplete="tel" required/>
