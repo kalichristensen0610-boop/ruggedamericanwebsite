@@ -90,7 +90,7 @@ export default function SeamlessGuttersOffer(){
             ['/gallery/bronze-gutters-brick-home.webp','Bronze seamless gutters installed on a brick home','Color matched seamless gutters'],
             ['/gallery/dark-gutters-two-story-home.webp','Dark gutters installed along a two story roofline','Two story gutter installation'],
             ['/gallery/front-porch-gutter-installation.webp','White gutters and downspouts installed on a brick home porch','Front porch gutter system'],
-          ].map(([src,alt,title])=><figure className="group overflow-hidden border border-ink/15 bg-white shadow-[6px_6px_0_#f3f0ec]" key={src}><div className="relative aspect-[4/3] overflow-hidden"><Image src={src} alt={alt} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105"/></div><figcaption className="border-t-4 border-oxide p-5 font-display text-2xl uppercase">{title}</figcaption></figure>)}
+          ].map(([src,alt,title])=><figure className="group overflow-hidden border border-ink/15 bg-white shadow-[6px_6px_0_#f3f0ec]" key={src}><div className="relative aspect-[4/3] overflow-hidden"><Image src={src} alt={alt} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105"/></div></figure>)}
         </div>
       </div>
     </section>

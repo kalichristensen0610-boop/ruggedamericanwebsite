@@ -25,3 +25,9 @@ body{font-family:Arial,sans-serif;-webkit-font-smoothing:antialiased}
 #main .rae-estimate-spotlight h3{line-height:1.12;letter-spacing:-.025em;font-weight:700}
 #main :is(input,select,textarea,button){font-family:inherit}
 @media(max-width:639px){#main h2.font-display{font-size:clamp(1.9rem,8.5vw,2.6rem)}#main h3.font-display{font-size:clamp(1.45rem,6.5vw,2rem)}}
+
+/* A real gutter project gets room to show the finished roofline. */
+.rae-gutter-project-hero>div{grid-template-columns:1fr}
+.rae-gutter-project-hero>div>div:last-child{aspect-ratio:2/1;border-radius:16px}
+.rae-gutter-project-hero img{object-position:center 35%}
+@media(max-width:639px){.rae-gutter-project-hero>div>div:last-child{aspect-ratio:4/3}}
