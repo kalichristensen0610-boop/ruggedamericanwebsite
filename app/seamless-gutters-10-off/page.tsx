@@ -28,8 +28,8 @@ export default function SeamlessGuttersOffer(){
       <Image src="/gallery/dark-gutters-two-story-home.webp" alt="Dark seamless gutters installed on a two story North Texas home" fill priority sizes="100vw" className="object-cover object-center"/>
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/45"/>
       <div className="grain absolute inset-0 opacity-25"/>
-      <div className="relative mx-auto grid max-w-7xl gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start xl:gap-20">
-        <div className="min-w-0 max-w-2xl xl:pt-8">
+      <div className="rae-offer-grid relative mx-auto grid max-w-7xl gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start xl:gap-20">
+        <div className="rae-offer-copy min-w-0 max-w-2xl xl:pt-8">
           <div className="mb-8 inline-flex rounded-md border-2 border-oxide bg-oxide px-5 py-3 text-sm font-black uppercase tracking-[.12em] text-ink">Limited offer: 10% off</div>
           <Eyebrow>SEAMLESS GUTTER INSTALLATION</Eyebrow>
           <h1 className="mt-4 max-w-xl font-display text-[clamp(2.25rem,4.5vw,4rem)] uppercase leading-[1.12] tracking-[-.025em]">Protect your home.<span className="mt-3 block text-oxide">Save 10%.</span></h1>

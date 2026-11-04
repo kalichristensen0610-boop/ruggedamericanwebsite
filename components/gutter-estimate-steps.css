@@ -26,3 +26,11 @@
 @media(max-width:380px){.rae-wizard .rae-wizard-names{grid-template-columns:1fr}}
 @container(min-width:420px){.rae-wizard .rae-wizard-choices{grid-template-columns:1fr 1fr}.rae-wizard .rae-wizard-choice{min-height:64px}}
 @media(prefers-reduced-motion:reduce){.rae-wizard-progress span{transition:none}}
+html body .rae-wizard{margin-top:8px;color:#201d1a}
+html body .rae-wizard .rae-wizard-intro{padding:15px;border-left:5px solid #f45514;background:#fff0e7;color:#201d1a;font-size:19px;font-weight:900;margin:0 0 20px}
+html body .rae-wizard .rae-wizard-title{text-transform:none;font-size:clamp(23px,5cqi,32px);line-height:1.2;color:#201d1a}
+html body .rae-wizard .rae-wizard-hint{font-size:14px;margin-bottom:20px;color:#655e57}
+html body .rae-wizard .rae-wizard-choice{min-height:65px;padding:16px;border-radius:7px;font-size:17px;background:#fff!important;color:#201d1a!important;border:2px solid #d4cec7!important}
+html body .rae-wizard .rae-wizard-selected{background:#fff0e7!important;border-color:#f45514!important;box-shadow:0 0 0 1px #f45514}
+html body .rae-wizard .rae-wizard-choice:focus-within{outline:3px solid #f45514;outline-offset:3px}
+html body .rae-wizard .rae-wizard-next{box-shadow:0 5px 0 #a53308;background:#f45514;color:#201d1a}

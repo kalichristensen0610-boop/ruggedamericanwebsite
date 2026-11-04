@@ -37,8 +37,8 @@ export default function ConcreteEstimatePage(){return <main className="overflow-
     <Image src="/concrete-landing/concrete-driveway-hero.webp" alt="Finished concrete driveway at a North Texas home" fill priority sizes="100vw" className="object-cover"/>
     <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-[#56301f]/55"/><div className="grain absolute inset-0 opacity-20"/>
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">{[['🍂','7%','-2s','13s'],['🍁','21%','-8s','16s'],['🍂','39%','-4s','14s'],['🍁','61%','-10s','17s'],['🍃','79%','-6s','15s'],['🍂','94%','-12s','18s']].map(([leaf,left,delay,duration],index)=><span className="concrete-fall-leaf text-2xl sm:text-3xl" style={{left,'--delay':delay,'--duration':duration} as React.CSSProperties} key={index}>{leaf}</span>)}</div>
-    <div className="relative mx-auto grid max-w-7xl gap-12 xl:grid-cols-[1.05fr_.95fr] xl:items-start xl:gap-16">
-      <div className="max-w-3xl xl:pt-8">
+    <div className="rae-offer-grid relative mx-auto grid max-w-7xl gap-12 xl:grid-cols-[1.05fr_.95fr] xl:items-start xl:gap-16">
+      <div className="rae-offer-copy max-w-3xl xl:pt-8">
         <p className="concrete-offer-badge inline-flex border-2 border-[#ffbd59] bg-oxide px-6 py-3 text-xl font-black uppercase tracking-[.1em] text-ink">15% Off</p>
         <p className="mt-8 text-sm font-black uppercase tracking-[.22em] text-[#ffbd59]">Limited fall concrete special</p>
         <h1 className="mt-4 font-sans text-[clamp(2.7rem,6vw,5.6rem)] font-black uppercase leading-[.95] tracking-[-.025em]">Pour this fall.<span className="mt-3 block text-oxide">Save 15%.</span></h1>
@@ -47,7 +47,7 @@ export default function ConcreteEstimatePage(){return <main className="overflow-
         <div className="mt-9 flex flex-wrap gap-3"><Button asChild><a href="#concrete-form">Claim My 15% Off <ArrowRight size={16}/></a></Button><Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> Call {business.phone}</a></Button></div>
         <p className="mt-5 max-w-2xl text-xs leading-5 text-white/55">Offer applies to qualifying concrete projects completed by Rugged American Exteriors. Cannot be combined with other offers. Project minimums, scheduling, and additional terms may apply. Contact us for complete details.</p>
       </div>
-      <div id="concrete-form" className="scroll-mt-6 rounded-2xl border-t-8 border-oxide bg-white p-6 text-ink shadow-[0_24px_70px_rgba(0,0,0,.4)] sm:p-9"><p className="text-xs font-black uppercase tracking-[.2em] text-oxide">15% off qualifying fall projects</p><h2 className="mt-2 font-sans text-3xl font-black uppercase leading-tight">Request your free concrete estimate.</h2><p className="mt-3 text-sm leading-6 text-ink/65">Tell us what you are planning and choose the closest concrete service. Photos are welcome.</p><ConcreteEstimateSteps/></div>
+      <div id="concrete-form" className="scroll-mt-6 rounded-2xl border-t-8 border-oxide bg-white p-6 text-ink shadow-[0_24px_70px_rgba(0,0,0,.4)] sm:p-9"><p className="text-xs font-black uppercase tracking-[.2em] text-oxide">15% off qualifying fall projects</p><h2 className="mt-2 font-sans text-3xl font-black uppercase leading-tight">Request your free concrete estimate.</h2><p className="mt-3 text-sm leading-6 text-ink/65">Tell us what you are planning and choose the closest concrete service. No photo needed.</p><ConcreteEstimateSteps/></div>
     </div>
   </section>
 
