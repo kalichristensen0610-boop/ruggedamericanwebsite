@@ -1,11 +1,11 @@
 @tailwind base;@tailwind components;@tailwind utilities;
 :root{--rae-build:20260811}
-:root{color-scheme:light}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#201d1a}.grain{background-image:radial-gradient(#ffffff18 1px,transparent 1px);background-size:18px 18px}.angle{clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}.focus-ring:focus-visible{outline:3px solid #f45514;outline-offset:3px}.bg-oxide .focus-ring:focus-visible{outline-color:#201d1a}.brand-shadow{box-shadow:6px 6px 0 #f3f0ec}.brand-shadow-lg{box-shadow:8px 8px 0 #f3f0ec}@media(max-width:639px){main h1,main h2,main h3{font-weight:900;text-wrap:balance;overflow-wrap:break-word}main .font-display{-webkit-text-stroke:.3px currentColor;letter-spacing:-.025em}h2.font-display{font-size:clamp(2.35rem,10.5vw,2.6rem);line-height:.98}h3.font-display{font-size:clamp(1.75rem,8vw,2rem);line-height:1}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+:root{color-scheme:light}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#201d1a}.grain{background-image:radial-gradient(#ffffff18 1px,transparent 1px);background-size:18px 18px}.angle{clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}.focus-ring:focus-visible{outline:3px solid #f45514;outline-offset:3px}.bg-oxide .focus-ring:focus-visible{outline-color:#201d1a}.brand-shadow{box-shadow:6px 6px 0 #f3f0ec}.brand-shadow-lg{box-shadow:8px 8px 0 #f3f0ec}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 /* A brighter, full-service exterior company. */
 .rae-home h2{font-family:Arial,sans-serif;font-size:clamp(2rem,3.4vw,3.25rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;text-transform:none;-webkit-text-stroke:0}
 .rae-home .brand-shadow{border-radius:14px;box-shadow:0 4px 18px #201d1a06}
-.rae-home .brand-shadow h3{font-family:Arial,sans-serif;text-transform:none;font-weight:750;font-size:1.5rem;letter-spacing:-.025em}
+.rae-home .brand-shadow h3{font-family:Arial,sans-serif;text-transform:none;font-weight:700;font-size:1.5rem;letter-spacing:-.025em}
 
 .rae-home .brand-shadow .mb-8{display:none}
 .rae-home .brand-shadow p{line-height:1.75}
@@ -15,3 +15,13 @@
 .rae-home a.bg-oxide{color:#201d1a}
 .rae-header nav button:hover,.rae-header nav>a:hover{color:#b83e12}
 .rae-footer a:hover{color:#b83e12}
+
+/* One type family and a consistent rhythm across the main website. */
+body{font-family:Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.font-display{font-weight:700}
+#main :is(h1,h2,h3){-webkit-text-stroke:0;text-wrap:balance;overflow-wrap:normal}
+#main :is(h2,h3){text-transform:none;letter-spacing:-.025em;line-height:1.15}
+#main .rae-page-hero h1{letter-spacing:-.035em;line-height:1.1}
+#main .rae-estimate-spotlight h3{line-height:1.12;letter-spacing:-.025em;font-weight:700}
+#main :is(input,select,textarea,button){font-family:inherit}
+@media(max-width:639px){#main h2.font-display{font-size:clamp(1.9rem,8.5vw,2.6rem)}#main h3.font-display{font-size:clamp(1.45rem,6.5vw,2rem)}}
