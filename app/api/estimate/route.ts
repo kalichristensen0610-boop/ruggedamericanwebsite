@@ -1,4 +1,5 @@
 import {NextResponse} from 'next/server';
+import {randomUUID} from 'node:crypto';
 import {z} from 'zod';
 import nodemailer from 'nodemailer';
 
@@ -63,12 +64,13 @@ function publicOrigin(req:Request){
   return new URL(req.url).origin;
 }
 
-function respond(req:Request,form:FormData|undefined,result:{success?:boolean;message:string;errors?:unknown},status=200,headers?:HeadersInit){
+function respond(req:Request,form:FormData|undefined,result:{success?:boolean;message:string;errors?:unknown;leadId?:string},status=200,headers?:HeadersInit){
   const returnTo=String(form?.get('return_to')||'');
   if(result.success){
     const destination=new URL('/thank-you',`${publicOrigin(req)}/`);
     const landingPage=String(form?.get('landing_page')||'').trim();
     if(landingPage) destination.searchParams.set('source',landingPage);
+    if(result.leadId) destination.searchParams.set('lead_id',result.leadId);
     attributionKeys.forEach(key=>{
       const value=String(form?.get(key)||'').trim();
       if(value) destination.searchParams.set(key,value);
@@ -186,7 +188,9 @@ export async function POST(req:Request){
       attachments:attachment?[attachment]:[],
     });
 
-    return respond(req,form,{success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.'});
+    const gutterCampaign=String(form.get('landing_page')||'').trim();
+    const leadId=['estimate-a','fall-seamless-gutters-500-off'].includes(gutterCampaign)?randomUUID():undefined;
+    return respond(req,form,{success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.',leadId});
   }catch(error){
     console.error('Estimate form delivery failed.',error instanceof Error?error.message:'Unknown error');
     return respond(req,form,{message:'We could not send your request. Please try again or call (817) 262-7170.'},500);
