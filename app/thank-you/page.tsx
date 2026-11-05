@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import {CheckCircle2,Home,Phone} from 'lucide-react';
 import {business} from '@/lib/data';
 
@@ -11,6 +12,7 @@ export const metadata:Metadata={
 
 export default function ThankYouPage(){
   return <main className="bg-warm px-4 py-20 md:py-28">
+    <Script id="gutter-submission-lead" strategy="afterInteractive" dangerouslySetInnerHTML={{__html:"(function () {\n  var params = new URLSearchParams(window.location.search);\n  var source = params.get('source');\n  var id = params.get('lead_id');\n  if (!['estimate-a', 'fall-seamless-gutters-500-off'].includes(source) ||\n      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id || '')) return;\n  var key = 'rae:gutter-lead:' + id;\n  var attempts = 0;\n  function send() {\n    try { if (window.localStorage.getItem(key)) return; } catch (_) { return; }\n    if (typeof window.fbq !== 'function' || !window.fbq.callMethod) {\n      if (++attempts < 120) window.setTimeout(send, 500);\n      return;\n    }\n    try {\n      window.localStorage.setItem(key, 'sent');\n      window.fbq('trackSingle', '1379781843674907', 'Lead',\n        {content_name: source, content_category: 'Gutter estimate'},\n        {eventID: 'gutter_' + id});\n    } catch (_) {\n      try { window.localStorage.removeItem(key); } catch (_) {}\n    }\n  }\n  send();\n})();"}}/>
     <section className="brand-shadow-lg mx-auto max-w-3xl border-t-8 border-oxide bg-white px-6 py-12 text-center md:px-14 md:py-16">
       <CheckCircle2 className="mx-auto text-oxide" size={64} strokeWidth={2.25} aria-hidden="true"/>
       <p className="mt-6 text-sm font-black uppercase tracking-[.2em] text-oxide">Request received</p>
