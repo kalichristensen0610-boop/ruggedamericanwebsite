@@ -9,6 +9,7 @@ const standaloneRoutes=new Set([
   '/beat-the-leaves-15-off',
   '/fall-seamless-gutters-500-off',
   '/concrete-estimate',
+  '/fencing-15-off',
 ]);
 
 export function SiteShell({children}:{children:React.ReactNode}){

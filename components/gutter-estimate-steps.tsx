@@ -3,7 +3,7 @@ import {useEffect,useRef,useState} from 'react';
 import './gutter-estimate-steps.css';
 const keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid','msclkid'];
  const titles=['Is your property in Dallas-Fort Worth or a nearby community?','Are you the homeowner?','What can we help you with?','When would you like it done?','Where should we send your free estimate?'];
-export function GutterEstimateSteps({campaign,projectKind='gutters'}:{campaign:string;projectKind?:'gutters'|'concrete'}){
+export function GutterEstimateSteps({campaign,projectKind='gutters'}:{campaign:string;projectKind?:'gutters'|'concrete'|'fencing'}){
  const ref=useRef<HTMLFormElement>(null);
  const [step,setStep]=useState(0);
  const [values,setValues]=useState<Record<string,string>>({});
@@ -33,7 +33,7 @@ export function GutterEstimateSteps({campaign,projectKind='gutters'}:{campaign:s
  <p className="rae-wizard-hint">Choose an answer below. Your contact details come at the end.</p>
  <fieldset hidden={step!==0}><legend className="rae-wizard-sr">Service area</legend>{choices('service_area',['Yes','Not sure / Nearby','No'])}</fieldset>
  <fieldset hidden={step!==1}><legend className="rae-wizard-sr">Homeowner</legend>{choices('homeowner',['Yes','No / Helping the owner'])}</fieldset>
- <fieldset hidden={step!==2}><legend className="rae-wizard-sr">Gutter project</legend>{choices('project_type',projectKind==='concrete'?['Driveway','Patio','Sidewalk or walkway','Shop slab or foundation','Stamped / decorative concrete','Demolition & replacement','Other / Not sure']:['New seamless gutters','Gutter replacement','Gutter guards','Gutter repair','Gutter cleaning','Not sure / Need advice'])}</fieldset>
+ <fieldset hidden={step!==2}><legend className="rae-wizard-sr">{projectKind==='gutters'?'Gutter':projectKind==='concrete'?'Concrete':'Fence'} project</legend>{choices('project_type',projectKind==='concrete'?['Driveway','Patio','Sidewalk or walkway','Shop slab or foundation','Stamped / decorative concrete','Demolition & replacement','Other / Not sure']:projectKind==='fencing'?['Board-on-board privacy fence','Side-by-side privacy fence','Fence replacement','Gate or fence repair','Other / Help me choose']:['New seamless gutters','Gutter replacement','Gutter guards','Gutter repair','Gutter cleaning','Not sure / Need advice'])}</fieldset>
  <fieldset hidden={step!==3}><legend className="rae-wizard-sr">Timeline</legend>{choices('project_timeline',['As soon as possible','Within a month','1 to 3 months','Just planning / Getting prices'])}</fieldset>
  <fieldset hidden={step!==4}><legend className="rae-wizard-sr">Your contact information</legend><div className="rae-wizard-names">{field('First name','first_name','text','given-name')}{field('Last name','last_name','text','family-name')}</div>{field('Phone number','phone','tel','tel')}{field('Email address','email','email','email')}{field('Property address or ZIP','address','text','street-address')}</fieldset>
  <div className="rae-wizard-actions">{step>0&&<button type="button" className="rae-wizard-back" disabled={sending} onClick={()=>go(step-1)}>Back</button>}<button className="rae-wizard-next" type="submit" disabled={sending}>{sending?'Sending…':step<4?'Next →':'Get My Free Estimate'}</button></div>
