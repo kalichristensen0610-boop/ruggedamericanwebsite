@@ -189,7 +189,7 @@ export async function POST(req:Request){
     });
 
     const gutterCampaign=String(form.get('landing_page')||'').trim();
-    const leadId=['estimate-a','fall-seamless-gutters-500-off'].includes(gutterCampaign)?randomUUID():undefined;
+    const leadId=['estimate-a','fall-seamless-gutters-500-off','fencing-15-off'].includes(gutterCampaign)?randomUUID():undefined;
     return respond(req,form,{success:true,message:'Thank you. Your request was sent successfully. Our team will be in touch soon.',leadId});
   }catch(error){
     console.error('Estimate form delivery failed.',error instanceof Error?error.message:'Unknown error');
