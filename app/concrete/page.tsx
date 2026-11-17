@@ -84,6 +84,7 @@ export default function ConcretePage(){
         <Eyebrow>CONCRETE SERVICES • FORT WORTH AREA</Eyebrow>
         <h1 className="max-w-4xl font-display text-[2.65rem] uppercase leading-[.95] md:text-7xl">Concrete Built for the Way You Use Your Property</h1>
         <p className="mt-6 max-w-2xl text-lg text-white/80">From form setting, pouring, and demolition to driveways, slabs, foundations, patios, and commercial projects, Rugged American Exteriors delivers concrete work built around how your property needs to perform.</p>
+        <a href="#concrete-process" className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-white px-4 font-bold text-ink">Read the Concrete Guide ↓</a>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild><Link href="/concrete/estimate">Get a Free Concrete Estimate <ArrowRight className="concrete-cta-arrow" size={16}/></Link></Button>
           <Button variant="outline" asChild><a href={`tel:${business.phoneHref}`}><Phone size={16}/> Call for a Quote</a></Button>
