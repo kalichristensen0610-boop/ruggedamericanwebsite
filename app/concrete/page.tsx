@@ -8,15 +8,12 @@ import {
   ArrowRight,
   BadgeCheck,
   Check,
-  Hammer,
   Home,
   MapPin,
   Phone,
-  Ruler,
   ShieldCheck,
   Sparkles,
   Sun,
-  Truck,
 } from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Eyebrow} from '@/components/sections';
@@ -48,8 +45,6 @@ const process=[
   ['Finish the surface and set joints','The finish is chosen for how the surface will be used. Control joints give shrinkage cracks a planned location; they don’t guarantee a crack-free slab.','shop-slab-finishing.webp','Crew finishing a freshly placed shop slab'],
   ['Protect the slab while it cures','Concrete gains strength over time. At the walkthrough, ask when you can walk on it, drive on it, and put heavier loads on it. Timing depends on the mix, weather, and intended use.','concrete-finish-detail.webp','Close-up of a finished concrete surface'],
 ] as const;
-
-const idealProjects=['Driveways','Walkways','Slabs','Concrete decks','Foundations','Decorative concrete','Sidewalks','Patios','Pool decks'];
 
 const faqs=[
   ['What types of concrete projects do you install?','We offer form setting and pouring, demolition, residential and commercial concrete, driveways, walkways, slabs, decks, foundations, decorative concrete, sidewalks, patios, and pool decks.'],
@@ -141,12 +136,7 @@ export default function ConcretePage(){
       </div>
     </section>
 
-    <section className="px-4 py-20">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.7fr_1.3fr]">
-        <div><Eyebrow>BUILT FOR THE PROJECT</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Applications</h2><p className="mt-5 text-ink/70">From foundational work to finished outdoor spaces, we help property owners choose concrete solutions that fit the site and intended use.</p></div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{idealProjects.map((item,index)=><div className="group border border-ink/15 bg-white p-5 transition hover:-translate-y-1 hover:border-oxide" key={item}><div className="flex items-center justify-between"><span className="font-display text-3xl text-steel">0{index+1}</span>{index%3===0?<Truck className="text-oxide"/>:index%3===1?<Hammer className="text-oxide"/>:<Ruler className="text-oxide"/>}</div><p className="mt-5 font-black uppercase">{item}</p></div>)}</div>
-      </div>
-    </section>
+
 
     <section className="bg-steel px-4 py-20">
       <div className="mx-auto max-w-5xl text-center"><Eyebrow>LOCAL CONCRETE WORK</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Concrete Projects Across the Fort Worth Area</h2><p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-ink/70">Looking for a concrete contractor in Fort Worth, Crowley, Burleson, Joshua, Mansfield, or Cleburne? Rugged American Exteriors provides residential and commercial concrete, demolition, driveways, walkways, slabs, foundations, patios, pool decks, and decorative concrete. We serve Crowley, Burleson, Joshua, Mansfield, Fort Worth, Cleburne, Arlington, and surrounding North Texas communities.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><Button asChild><Link href="/service-areas">Explore Our Service Areas</Link></Button><Button variant="outline" asChild><Link href="/concrete/estimate">Request a Concrete Estimate</Link></Button></div></div>
