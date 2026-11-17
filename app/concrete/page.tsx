@@ -41,10 +41,12 @@ const services=[
 ] as const;
 
 const process=[
-  ['Free Estimate','We review the project, measurements, access, and what you want the space used for.'],
-  ['Site Preparation','The area is prepared and graded as needed before the concrete installation.'],
-  ['Pour & Finish','Concrete is placed and professionally finished for a clean, durable surface.'],
-  ['Final Walkthrough','We review the completed project with you and make sure the area is ready for curing and use.'],
+  ['Plan the project','We review what the slab will support, measure the area, and discuss access, drainage, and the finish you want.',null,''],
+  ['Prepare the ground','For replacements, the old concrete is removed as scoped. The ground is graded and the base compacted as needed to give the slab more even support.',null,''],
+  ['Set forms and reinforcement','Forms define the edges, elevation, and slope. Where the design calls for rebar, supports called chairs hold it at the specified height so it stays inside the concrete during the pour.','reinforced-shop-slab.webp','Rebar grid and forms in place before a shop slab pour'],
+  ['Place the concrete','We confirm the mix and thickness for the intended use. On sites with limited truck access, a pump can help move concrete to the forms.','concrete-pump-pour.webp','Concrete pump in use during slab placement'],
+  ['Finish the surface and set joints','The finish is chosen for how the surface will be used. Control joints give shrinkage cracks a planned location; they don’t guarantee a crack-free slab.','shop-slab-finishing.webp','Crew finishing a freshly placed shop slab'],
+  ['Protect the slab while it cures','Concrete gains strength over time. At the walkthrough, ask when you can walk on it, drive on it, and put heavier loads on it. Timing depends on the mix, weather, and intended use.','concrete-finish-detail.webp','Close-up of a finished concrete surface'],
 ] as const;
 
 const idealProjects=['Driveways','Walkways','Slabs','Concrete decks','Foundations','Decorative concrete','Sidewalks','Patios','Pool decks'];
@@ -110,8 +112,19 @@ export default function ConcretePage(){
       </div>
     </section>
 
-    <section className="bg-ink px-4 py-20 text-white">
-      <div className="mx-auto max-w-7xl"><Eyebrow>FROM IDEA TO FINISHED FLATWORK</Eyebrow><h2 className="font-display text-4xl uppercase md:text-6xl">Our Concrete Process</h2><ol className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{process.map(([title,description],index)=><li className="concrete-process-card border border-oxide/60 bg-[#2b2723] p-6" key={title}><span className="concrete-step-number inline-flex h-11 w-11 items-center justify-center border-2 border-oxide font-black text-oxide">0{index+1}</span><h3 className="mt-5 font-display text-2xl uppercase">{title}</h3><p className="mt-3 leading-7 text-white/70">{description}</p></li>)}</ol></div>
+    <section id="concrete-process" className="bg-stone-100 px-4 py-20 text-ink">
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow>THE CONCRETE GUIDE</Eyebrow>
+        <h2 className="font-display text-4xl uppercase md:text-6xl">What goes into your concrete project</h2>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-ink/75">A good slab starts before the truck arrives. Here’s what happens from the first site visit through curing, with photos from our concrete work. The mix, thickness, and reinforcement depend on your site and how you’ll use the slab.</p>
+        <ol className="mt-10 grid gap-6 md:grid-cols-2">
+          {process.map(([title,description,photo,alt],index)=><li key={title} className="overflow-hidden rounded-xl border border-ink/10 bg-white">
+            {photo&&<Image src={`/concrete-projects/${photo}`} alt={alt} width={1000} height={680} sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover"/>}
+            <div className="p-6"><span className="font-bold text-oxide">Step {index+1}</span><h3 className="mt-2 font-display text-2xl uppercase">{title}</h3><p className="mt-3 leading-7 text-ink/75">{description}</p></div>
+          </li>)}
+        </ol>
+        <div className="mt-8 rounded-xl border border-ink/10 bg-white p-6"><h3 className="font-display text-2xl uppercase">What to ask about in your estimate</h3><p className="mt-3 leading-7 text-ink/75">Ask what’s included for tear-out, base preparation, slab thickness, reinforcement, drainage, joint layout, and finish. A driveway, patio, and shop slab may each need a different plan.</p></div>
+      </div>
     </section>
 
     <section className="px-4 py-20">
