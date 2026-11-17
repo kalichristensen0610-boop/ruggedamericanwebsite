@@ -112,18 +112,31 @@ export default function ConcretePage(){
       </div>
     </section>
 
-    <section id="concrete-process" className="bg-stone-100 px-4 py-20 text-ink">
+    <section id="concrete-process" className="scroll-mt-28 bg-[#f6f3ed] px-5 py-20 text-ink">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow>THE CONCRETE GUIDE</Eyebrow>
-        <h2 className="font-display text-4xl uppercase md:text-6xl">What goes into your concrete project</h2>
-        <p className="mt-5 max-w-3xl text-lg leading-8 text-ink/75">A good slab starts before the truck arrives. Here’s what happens from the first site visit through curing, with photos from our concrete work. The mix, thickness, and reinforcement depend on your site and how you’ll use the slab.</p>
-        <ol className="mt-10 grid gap-6 md:grid-cols-2">
-          {process.map(([title,description,photo,alt],index)=><li key={title} className="overflow-hidden rounded-xl border border-ink/10 bg-white">
-            {photo&&<Image src={`/concrete-projects/${photo}`} alt={alt} width={1000} height={680} sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover"/>}
-            <div className="p-6"><span className="font-bold text-oxide">Step {index+1}</span><h3 className="mt-2 font-display text-2xl uppercase">{title}</h3><p className="mt-3 leading-7 text-ink/75">{description}</p></div>
-          </li>)}
-        </ol>
-        <div className="mt-8 rounded-xl border border-ink/10 bg-white p-6"><h3 className="font-display text-2xl uppercase">What to ask about in your estimate</h3><p className="mt-3 leading-7 text-ink/75">Ask what’s included for tear-out, base preparation, slab thickness, reinforcement, drainage, joint layout, and finish. A driveway, patio, and shop slab may each need a different plan.</p></div>
+        <header className="max-w-4xl border-b border-ink/20 pb-10">
+          <Eyebrow>THE RUGGED AMERICAN CONCRETE GUIDE</Eyebrow>
+          <h2 className="font-display text-5xl uppercase leading-none md:text-7xl">A good slab starts below the surface.</h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8">Follow a concrete project from the first site visit to the finished slab. See what goes under the concrete, why it matters, and what to look for in your estimate.</p>
+        </header>
+        <div className="grid gap-10 pt-10 lg:grid-cols-[15rem_minmax(0,1fr)]">
+          <nav aria-label="Concrete guide contents" className="self-start border-l-2 border-oxide pl-5 lg:sticky lg:top-32">
+            <h3 className="font-bold uppercase tracking-wider">In this guide</h3>
+            <ol className="mt-4 space-y-3">{process.map(([title],index)=><li key={title}><a className="inline-flex gap-3 underline-offset-4 hover:underline" href={`#concrete-step-${index+1}`}><span className="font-bold text-oxide">0{index+1}</span>{title}</a></li>)}</ol>
+            <a href="#compare-concrete-estimates" className="mt-5 inline-block font-bold underline underline-offset-4">Compare estimates</a>
+          </nav>
+          <div className="min-w-0">
+            {process.map(([title,description,photo,alt],index)=><article id={`concrete-step-${index+1}`} key={title} className="scroll-mt-28 border-b border-ink/20 pb-12 pt-10 first:pt-0">
+              <p className="font-bold uppercase tracking-widest text-oxide">0{index+1} / The concrete process</p>
+              <h3 className="mt-3 font-display text-3xl uppercase md:text-5xl">{title}</h3>
+              <p className="mt-4 max-w-3xl text-lg leading-8">{description}</p>
+              {photo&&<figure className="mt-7"><Image src={`/concrete-projects/${photo}`} alt={alt} width={1000} height={680} sizes="(min-width: 1024px) 70vw, 100vw" className="aspect-[3/2] w-full rounded-lg object-cover"/><figcaption className="mt-2 text-sm text-ink/75">{alt}</figcaption></figure>}
+              {index===2&&<aside className="mt-7 border-l-4 border-oxide bg-white p-6"><h4 className="text-xl font-bold">Why lift the rebar off the ground?</h4><p className="mt-2 leading-7">Rebar needs concrete around it. Chairs hold the steel at the designed height during placement. Reinforcement helps limit how wide cracks open; it cannot make a slab crack-proof.</p></aside>}
+              <details className="mt-6 rounded-lg border border-ink/20 bg-white p-4"><summary className="cursor-pointer font-bold">{['What should I show you at the site visit?','Why does the base matter?','Does every slab use the same rebar?','Does higher PSI solve every problem?','What do the lines in the slab do?','When can I use the slab?'][index]}</summary><p className="mt-3 leading-7">{['Point out where water collects, what needs to come out, and what will sit on the concrete. Photos can help us understand access and existing conditions.','The slab transfers loads to the ground below. Soft or uneven support can lead to movement, so base prep should be clear in the estimate.','No. The intended load and the site determine the reinforcement. A structural slab may require engineered details.','PSI describes compressive strength. Base support, thickness, joints, placement, and curing also matter.','Control joints help direct shrinkage cracks. Ask where the joints will go and how the new slab will meet existing concrete.','Foot traffic, parking, and heavy loads have different timelines. Follow the instructions for your project and conditions.'][index]}</p></details>
+            </article>)}
+            <aside id="compare-concrete-estimates" className="mt-10 scroll-mt-28 rounded-lg bg-ink p-7 text-white"><h3 className="font-display text-3xl uppercase">Compare the work behind the price</h3><p className="mt-4 leading-7">Ask each contractor to spell out demolition and haul-off, base prep, concrete mix and thickness, reinforcement, drainage, joints, finish, and curing instructions. Compare those details alongside the total.</p><Link href="/concrete/estimate" className="mt-5 inline-block font-bold underline underline-offset-4">Request a concrete estimate</Link></aside>
+          </div>
+        </div>
       </div>
     </section>
 
